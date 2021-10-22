@@ -1,10 +1,16 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include <list>
 
 class Player
 {
 private: 
 	sf::RectangleShape playerModel;
+	std::pair<sf::Keyboard::Key, sf::Vector2f> up;
+	std::pair<sf::Keyboard::Key, sf::Vector2f> down;
+	std::pair<sf::Keyboard::Key, sf::Vector2f> left;
+	std::pair<sf::Keyboard::Key, sf::Vector2f> right;
+	
 	sf::CircleShape point1,
 		point2,
 		point3,

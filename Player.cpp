@@ -20,6 +20,11 @@ Player::Player()
 	this->point6 = shape;
 	this->point7 = shape;
 	this->point8 = shape;
+
+	up = std::pair<sf::Keyboard::Key, sf::Vector2f>(sf::Keyboard::W, sf::Vector2f(0.f, 0.f));
+	down = std::pair<sf::Keyboard::Key, sf::Vector2f>(sf::Keyboard::W, sf::Vector2f(0.f, 0.f));
+	left = std::pair<sf::Keyboard::Key, sf::Vector2f>(sf::Keyboard::W, sf::Vector2f(0.f, 0.f));
+	right = std::pair<sf::Keyboard::Key, sf::Vector2f>(sf::Keyboard::W, sf::Vector2f(0.f, 0.f));
 }
 
 void Player::drawPlayer(double width, double height, sf::RenderWindow* window)
@@ -54,5 +59,25 @@ void Player::drawPlayer(double width, double height, sf::RenderWindow* window)
 	window->draw(point6);
 	window->draw(point7);
 	window->draw(point8);
+}
+
+void Player::setUp(std::pair<sf::Keyboard::Key, sf::Vector2f> cont)
+{
+	up = cont;
+}
+
+void Player::setLeft(std::pair<sf::Keyboard::Key, sf::Vector2f> cont)
+{
+	left = cont;
+}
+
+void Player::setRight(std::pair<sf::Keyboard::Key, sf::Vector2f> cont)
+{
+	right = cont;
+}
+
+void Player::setDown(std::pair<sf::Keyboard::Key, sf::Vector2f> cont)
+{
+	down = cont;
 }
 
