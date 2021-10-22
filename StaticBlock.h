@@ -7,5 +7,8 @@ class StaticBlock :
 {
 public:
     virtual sf::RectangleShape& getToDraw();
+    virtual bool isInteractive() override;
+    
+
 };
 

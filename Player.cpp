@@ -61,6 +61,30 @@ void Player::drawPlayer(double width, double height, sf::RenderWindow* window)
 	window->draw(point8);
 }
 
+void Player::moveBy(sf::Vector2f position)
+{
+	playerModel.move(position);
+}
+
+
+
+sf::Vector2f Player::getCalculateMove()
+{
+	if (sf::Keyboard::isKeyPressed(up.first))
+		return up.second;
+
+	if (sf::Keyboard::isKeyPressed(down.first))
+		return down.second;
+
+	if (sf::Keyboard::isKeyPressed(left.first))
+		return left.second;
+
+	if (sf::Keyboard::isKeyPressed(right.first))
+		return right.second;
+	
+	return sf::Vector2f(0.f, 0.f);
+}
+
 void Player::setUp(std::pair<sf::Keyboard::Key, sf::Vector2f> cont)
 {
 	up = cont;
@@ -79,5 +103,25 @@ void Player::setRight(std::pair<sf::Keyboard::Key, sf::Vector2f> cont)
 void Player::setDown(std::pair<sf::Keyboard::Key, sf::Vector2f> cont)
 {
 	down = cont;
+}
+
+bool Player::isCanMoveRight(sf::FloatRect shape)
+{
+	return (!point3.getGlobalBounds().intersects(shape) && !point4.getGlobalBounds().intersects(shape) && !point5.getGlobalBounds().intersects(shape));
+}
+
+bool Player::isCanMoveLeft(sf::FloatRect shape)
+{
+	return (!point1.getGlobalBounds().intersects(shape) && !point7.getGlobalBounds().intersects(shape) && !point8.getGlobalBounds().intersects(shape));
+}
+
+bool Player::isCanMoveUp(sf::FloatRect shape)
+{
+	return (!point1.getGlobalBounds().intersects(shape) && !point2.getGlobalBounds().intersects(shape) && !point3.getGlobalBounds().intersects(shape));
+}
+
+bool Player::isCanMoveDown(sf::FloatRect shape)
+{
+	return (!point5.getGlobalBounds().intersects(shape) && !point6.getGlobalBounds().intersects(shape) && !point7.getGlobalBounds().intersects(shape));
 }
 

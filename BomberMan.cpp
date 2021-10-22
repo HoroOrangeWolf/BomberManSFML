@@ -1,35 +1,28 @@
 ﻿#include <SFML/Graphics.hpp>
 #include "GameMap.h"
 #include "StaticBlock.h"
+#include "GameEngine.h"
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(700, 700), "SFML works!");
-    sf::CircleShape shape(100.f);
-    shape.setFillColor(sf::Color::Green);
+    GameEngine engine("Sfml", 700, 700);
+
+    Player player;
+
+    player.setUp(std::pair<sf::Keyboard::Key, sf::Vector2f>(sf::Keyboard::W, sf::Vector2f(0.f, -0.1f)));
+    player.setDown(std::pair<sf::Keyboard::Key, sf::Vector2f>(sf::Keyboard::S, sf::Vector2f(0.f, 0.1f)));
+    player.setLeft(std::pair<sf::Keyboard::Key, sf::Vector2f>(sf::Keyboard::A, sf::Vector2f(-0.1f, 0.f)));
+    player.setRight(std::pair<sf::Keyboard::Key, sf::Vector2f>(sf::Keyboard::D, sf::Vector2f(0.1f, 0.f)));
 
     GameMap gameMap(10, 10);
-
-    for(int x=0; x < 10; x++)
-        for (int y = 0; y < 10; ++y)
-            gameMap.setElement(x, y, new MapElement());
-       
-
+    
     gameMap.setElement(3, 3, new StaticBlock());
 
-    while (window.isOpen())
-    {
-        sf::Event event;
-        while (window.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
-                window.close();
-        }
+    engine.setGameMap(gameMap);
+    engine.setPlayer1(player);
 
-        window.clear();
-        gameMap.drawMap(&window);
-        window.display();
-    }
+    engine.run();
+    
 
     return 0;
 }

@@ -2,9 +2,15 @@
 
 sf::RectangleShape& StaticBlock::getToDraw()
 {
-    sf::RectangleShape shape = MapElement::getToDraw();
+    sf::RectangleShape &shape = MapElement::getToDraw();
 
     shape.setFillColor(sf::Color::Green);
 
     return shape;
 }
+
+bool StaticBlock::isInteractive()
+{
+    return true;
+}
+

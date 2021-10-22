@@ -10,14 +10,18 @@ class GameMap
 private:
 	int mapWidthElements, mapHeightElements;
 	MapElement ***elements;
-	Player player;
+	double singleElementWidth, singleElementHeight;
+	std::list<MapElement*> interactiveBlocks;
+	void removeInteractiveItem(int x, int y);
 public:
 	GameMap(int mapWidthElements, int mapHeightElements);
 	void setElement(int x, int y, MapElement *element);
 	void clearElement(int x, int y);
+	double getSingleElementWidth();
+	double getSingleElementHeight();
 	MapElement* getElement(int x, int y);
-
 	void drawMap(sf::RenderWindow* window);
+	sf::Vector2f calculatePlayerMovement(Player* player);
 
 
 };

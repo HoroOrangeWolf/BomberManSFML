@@ -24,6 +24,16 @@ public:
 	Player();
 
 	void drawPlayer(double width, double height, sf::RenderWindow* window);
+	void moveBy(sf::Vector2f position);
+	sf::Vector2f getCalculateMove();
+	void setUp(std::pair < sf::Keyboard::Key, sf::Vector2f> cont);
+	void setLeft(std::pair < sf::Keyboard::Key, sf::Vector2f> cont);
+	void setRight(std::pair < sf::Keyboard::Key, sf::Vector2f> cont);
+	void setDown(std::pair < sf::Keyboard::Key, sf::Vector2f> cont);
+	bool isCanMoveRight(sf::FloatRect shape);
+	bool isCanMoveLeft(sf::FloatRect shape);
+	bool isCanMoveUp(sf::FloatRect shape);
+	bool isCanMoveDown(sf::FloatRect shape);
 
 };
 
