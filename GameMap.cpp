@@ -37,6 +37,8 @@ void GameMap::drawMap(sf::RenderWindow* window)
 	double singleElementWidth = (double)sizeWindow.x / mapWidthElements,
 		singleElementHeight = (double)sizeWindow.y / mapHeightElements;
 
+	
+
 	for(int x = 0; x < mapWidthElements; ++x)
 		for (int y = 0; y < mapHeightElements; ++y)
 		{
@@ -52,6 +54,8 @@ void GameMap::drawMap(sf::RenderWindow* window)
 
 			window->draw(shape);
 		}
+
+	player.drawPlayer(singleElementWidth, singleElementHeight, window);
 	
 }
 
