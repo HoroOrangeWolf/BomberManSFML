@@ -98,8 +98,6 @@ sf::Vector2f GameMap::calculatePlayerMovement(Player* player)
 		MapElement* el = *it;
 		sf::FloatRect recta = el->getFloatRect();
 
-		std::cout << player->isCanMoveUp(recta) << player->isCanMoveDown(recta) << player->isCanMoveLeft(recta) << player->isCanMoveRight(recta) << std::endl;
-
 		if (mover.x > 0.f && !player->isCanMoveRight(recta))
 			mover.x = 0;
 		else if (mover.x < 0.f && !player->isCanMoveLeft(recta))
