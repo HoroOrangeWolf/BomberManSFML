@@ -1,22 +1,4 @@
-﻿  Player.cpp
-C:\Users\wojci\source\repos\BomberMan\BomberMan\Player.cpp(32,42): warning C4244: "argument": konwersja z "double" do "T", możliwa utrata danych
-          with
-          [
-              T=float
-          ]
-C:\Users\wojci\source\repos\BomberMan\BomberMan\Player.cpp(32,35): warning C4244: "argument": konwersja z "double" do "T", możliwa utrata danych
-          with
-          [
-              T=float
-          ]
-C:\Users\wojci\source\repos\BomberMan\BomberMan\Player.cpp(40,27): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
-C:\Users\wojci\source\repos\BomberMan\BomberMan\Player.cpp(42,35): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
-C:\Users\wojci\source\repos\BomberMan\BomberMan\Player.cpp(44,48): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
-C:\Users\wojci\source\repos\BomberMan\BomberMan\Player.cpp(44,35): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
-C:\Users\wojci\source\repos\BomberMan\BomberMan\Player.cpp(46,57): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
-C:\Users\wojci\source\repos\BomberMan\BomberMan\Player.cpp(46,35): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
-C:\Users\wojci\source\repos\BomberMan\BomberMan\Player.cpp(48,53): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
-C:\Users\wojci\source\repos\BomberMan\BomberMan\Player.cpp(48,27): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
-C:\Users\wojci\source\repos\BomberMan\BomberMan\Player.cpp(50,49): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
-C:\Users\wojci\source\repos\BomberMan\BomberMan\Player.cpp(52,34): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
+﻿  BomberMan.cpp
+  SoundModule.cpp
+  Generowanie kodu...
   BomberMan.vcxproj -> C:\Users\wojci\source\repos\BomberMan\x64\Debug\BomberMan.exe

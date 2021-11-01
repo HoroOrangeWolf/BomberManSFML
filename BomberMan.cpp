@@ -2,10 +2,15 @@
 #include "GameMap.h"
 #include "StaticBlock.h"
 #include "GameEngine.h"
+#include "SoundModule.h"
 
 int main()
 {
     GameEngine engine("Sfml", 700, 700);
+    SoundModule::SoundModule sounds;
+
+    sounds.loadSounds();
+    sounds.play(SoundModule::SOUNDS::CLICK);
 
     Player player;
 
@@ -16,10 +21,13 @@ int main()
 
     GameMap gameMap(10, 10);
     
+  
+
     gameMap.setElement(3, 3, new StaticBlock());
 
     engine.setGameMap(gameMap);
     engine.setPlayer1(player);
+
 
     engine.run();
     
