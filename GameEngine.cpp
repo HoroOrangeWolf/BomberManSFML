@@ -38,6 +38,22 @@ void GameEngine::setGameMap(GameMap& map)
 
 void GameEngine::run()
 {
+
+    /*sf::Font font;
+
+    font.loadFromFile("font/consola.ttf");
+
+    sf::Text text;
+
+    text.setFont(font);
+    text.setString("Dziala");
+    text.setCharacterSize(30);
+    text.setFillColor(sf::Color::Green);
+
+    text.setPosition(sf::Vector2f(150.f, 150.f));
+
+    */
+
     auto lastFrame = getCurrentTime();
     int fpsInterval = 1000 / fps;
 
@@ -62,6 +78,7 @@ void GameEngine::run()
         Vector2f nextMove = map->calculatePlayerMovement(player1);
         player1->moveBy(nextMove);
         player1->drawPlayer(map->getSingleElementWidth(), map->getSingleElementHeight(),window);
+        //window->draw(text);
         window->display();
     }
 }
