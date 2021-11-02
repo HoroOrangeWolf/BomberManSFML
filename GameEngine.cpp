@@ -82,3 +82,8 @@ void GameEngine::run()
         window->display();
     }
 }
+
+RenderWindow* GameEngine::getWindow()
+{
+    return window;
+}

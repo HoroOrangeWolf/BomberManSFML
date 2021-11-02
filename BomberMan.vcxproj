@@ -148,6 +148,7 @@
     <ClCompile Include="BomberMan.cpp" />
     <ClCompile Include="GameEngine.cpp" />
     <ClCompile Include="GameMap.cpp" />
+    <ClCompile Include="GameMenu.cpp" />
     <ClCompile Include="MapElement.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="SoundModule.cpp" />
@@ -156,6 +157,7 @@
   <ItemGroup>
     <ClInclude Include="GameEngine.h" />
     <ClInclude Include="GameMap.h" />
+    <ClInclude Include="GameMenu.h" />
     <ClInclude Include="MapElement.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="SoundModule.h" />

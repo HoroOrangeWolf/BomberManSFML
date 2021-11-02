@@ -3,10 +3,13 @@
 #include "StaticBlock.h"
 #include "GameEngine.h"
 #include "SoundModule.h"
+#include "GameMenu.h"
 
 int main()
 {
     GameEngine engine("Sfml", 700, 700);
+    GameMenu menu(engine.getWindow());
+    menu.run();
     SoundModule::SoundModule sounds;
 
     sounds.loadSounds();
