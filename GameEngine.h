@@ -26,7 +26,7 @@ public:
 
 	void run();
 
-
+	RenderWindow* getWindow();
 	
 };
 
