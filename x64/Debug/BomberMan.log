@@ -1,2 +1,24 @@
-﻿  GameMenu.cpp
+﻿  GameMap.cpp
+C:\Users\wojci\source\repos\BomberMan\BomberMan\GameMap.cpp(110,51): warning C4244: "argument": konwersja z "double" do "T", możliwa utrata danych
+          with
+          [
+              T=float
+          ]
+C:\Users\wojci\source\repos\BomberMan\BomberMan\GameMap.cpp(110,31): warning C4244: "argument": konwersja z "double" do "T", możliwa utrata danych
+          with
+          [
+              T=float
+          ]
+C:\Users\wojci\source\repos\BomberMan\BomberMan\GameMap.cpp(111,76): warning C4244: "argument": konwersja z "double" do "T", możliwa utrata danych
+          with
+          [
+              T=float
+          ]
+C:\Users\wojci\source\repos\BomberMan\BomberMan\GameMap.cpp(111,53): warning C4244: "argument": konwersja z "double" do "T", możliwa utrata danych
+          with
+          [
+              T=float
+          ]
+  GameMenu.cpp
+  Generowanie kodu...
   BomberMan.vcxproj -> C:\Users\wojci\source\repos\BomberMan\x64\Debug\BomberMan.exe

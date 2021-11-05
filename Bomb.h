@@ -7,14 +7,14 @@ class Bomb :
 {
 private:
     int power;
-    long msToExplode;
-    long creationTime;
+    long long msToExplode;
+    long long creationTime;
 public:
     Bomb();
     Bomb(int power, long msToExplode);
     void setPower(int power);
     void setMsToExplode(long msToExplode);
     bool isReadyToExplode();
-    auto getCurrentTime();
+    int getPower();
 };
 

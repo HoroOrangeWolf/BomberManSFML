@@ -1,5 +1,7 @@
 #include "GameEngine.h"
 #include <chrono>
+#include "Bomb.h"
+#include <iostream>
 
 void GameEngine::setBackGroundColor(Color color)
 {
@@ -56,6 +58,11 @@ void GameEngine::run()
 
     auto lastFrame = getCurrentTime();
     int fpsInterval = 1000 / fps;
+    Bomb bomb;
+
+    bomb.setX(4);
+    bomb.setY(4);
+#
 
     while (window->isOpen())
     {
@@ -73,12 +80,21 @@ void GameEngine::run()
         if ((currentFrame - lastFrame) < fpsInterval)
             continue;
 
+        map->gameCycle();
 
         window->clear();
         map->drawMap(window);
         Vector2f nextMove = map->calculatePlayerMovement(player1);
+
+        if (player1->isCanPlaceBomb()) {
+            map->addBomb(&bomb);
+        }
+
         player1->moveBy(nextMove);
         player1->drawPlayer(map->getSingleElementWidth(), map->getSingleElementHeight(),window);
+
+
+
         //window->draw(text);
         window->display();
     }

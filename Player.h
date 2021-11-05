@@ -11,9 +11,9 @@ private:
 	std::pair<sf::Keyboard::Key, sf::Vector2f> down;
 	std::pair<sf::Keyboard::Key, sf::Vector2f> left;
 	std::pair<sf::Keyboard::Key, sf::Vector2f> right;
-	std::pair<sf::Keyboard::Key, sf::Vector2f> placeBomb;
-	long msDelayToPlaceBomb;
-	long lastBombPlace;
+	sf::Keyboard::Key placeBomb;
+	long long msDelayToPlaceBomb;
+	long long lastBombPlace;
 
 	
 	sf::CircleShape point1,
@@ -36,7 +36,7 @@ public:
 	void setLeft(std::pair < sf::Keyboard::Key, sf::Vector2f> cont);
 	void setRight(std::pair < sf::Keyboard::Key, sf::Vector2f> cont);
 	void setDown(std::pair < sf::Keyboard::Key, sf::Vector2f> cont);
-	void setPlaceBomb(std::pair < sf::Keyboard::Key, sf::Vector2f> cont);
+	void setPlaceBomb(sf::Keyboard::Key);
 	void setDelayToPlaceBomb(long msToPlaceBomb);
 	void restartBombPlaceTime();
 
@@ -45,6 +45,7 @@ public:
 	bool isCanMoveUp(sf::FloatRect shape);
 	bool isCanMoveDown(sf::FloatRect shape);
 	bool isCanPlaceBomb();
+
 	auto getCurrentTime();
 
 };

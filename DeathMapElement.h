@@ -4,8 +4,8 @@ class DeathMapElement :
     public MapElement
 {
 private:
-    long msToDisappear;
-    long creationTime;
+    long long msToDisappear;
+    long long creationTime;
 public:
     DeathMapElement();
     DeathMapElement(long msToDisappear);
