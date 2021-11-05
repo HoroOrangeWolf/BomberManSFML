@@ -65,6 +65,7 @@ void GameEngine::run()
         {
             if (event.type == sf::Event::Closed)
                 window->close();
+          
         }
 
         auto currentFrame = getCurrentTime();

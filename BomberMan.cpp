@@ -4,12 +4,21 @@
 #include "GameEngine.h"
 #include "SoundModule.h"
 #include "GameMenu.h"
+#include <iostream>
 
 int main()
 {
     GameEngine engine("Sfml", 700, 700);
     GameMenu menu(engine.getWindow());
-    menu.run();
+    
+    Button bt = menu.run();
+
+    if (bt == Button::PLAY_BUTTON)
+        std::cout << "PLayButton\n";
+
+    if (bt == Button::EXIT_BUTTON)
+        std::cout << "ExitButton\n";
+
     SoundModule::SoundModule sounds;
 
     sounds.loadSounds();
