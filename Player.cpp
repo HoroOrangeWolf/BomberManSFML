@@ -48,18 +48,18 @@ void Player::drawPlayer(double width, double height, sf::RenderWindow* window)
 
 	point6.setPosition(pos.x + width/2, pos.y + height - 4.f);
 
-	point7.setPosition(pos.x + 1.f, pos.y + height - 4.f);
+point7.setPosition(pos.x + 1.f, pos.y + height - 4.f);
 
-	point8.setPosition(pos.x, pos.y + height/2);
+point8.setPosition(pos.x, pos.y + height / 2);
 
-	window->draw(point1);
-	window->draw(point2);
-	window->draw(point3);
-	window->draw(point4);
-	window->draw(point5);
-	window->draw(point6);
-	window->draw(point7);
-	window->draw(point8);
+window->draw(point1);
+window->draw(point2);
+window->draw(point3);
+window->draw(point4);
+window->draw(point5);
+window->draw(point6);
+window->draw(point7);
+window->draw(point8);
 }
 
 void Player::moveBy(sf::Vector2f position)
@@ -86,7 +86,7 @@ sf::Vector2f Player::getCalculateMove()
 
 	if (sf::Keyboard::isKeyPressed(right.first))
 		return right.second;
-	
+
 	return sf::Vector2f(0.f, 0.f);
 }
 
@@ -110,9 +110,9 @@ void Player::setDown(std::pair<sf::Keyboard::Key, sf::Vector2f> cont)
 	down = cont;
 }
 
-void Player::setPlaceBomb(std::pair<sf::Keyboard::Key, sf::Vector2f> cont)
+void Player::setPlaceBomb(sf::Keyboard::Key key)
 {
-	this->placeBomb = cont;
+	this->placeBomb = key;
 }
 
 void Player::setDelayToPlaceBomb(long msToPlaceBomb)
@@ -147,6 +147,13 @@ bool Player::isCanMoveDown(sf::FloatRect shape)
 
 bool Player::isCanPlaceBomb()
 {
-	return (lastBombPlace + msDelayToPlaceBomb) < getCurrentTime();
+
+	if (sf::Keyboard::isKeyPressed(placeBomb) && (lastBombPlace + msDelayToPlaceBomb < getCurrentTime()))
+	{
+		lastBombPlace = getCurrentTime();
+		return true;
+	}
+	else 
+		return false;
 }
 

@@ -1,10 +1,10 @@
 #include "Bomb.h"
-
+#include <iostream>
 Bomb::Bomb()
 {
 	this->creationTime = getCurrentTime();
 	this->power = 1;
-	this->msToExplode = 500L;
+	this->msToExplode = 5000L;
 }
 
 Bomb::Bomb(int power, long msToExplode)
@@ -27,4 +27,9 @@ void Bomb::setMsToExplode(long msToExplode)
 bool Bomb::isReadyToExplode()
 {
 	return (creationTime + msToExplode) < getCurrentTime();
+}
+
+int Bomb::getPower()
+{
+	return power;
 }

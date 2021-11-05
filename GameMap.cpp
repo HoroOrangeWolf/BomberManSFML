@@ -17,7 +17,43 @@ void GameMap::removeInteractiveItem(int x, int y)
 
 void GameMap::addBomb(Bomb* bomb)
 {
+	elements[bomb->getX()][bomb->getY()] = bomb;
 	this->bombs.push_back(bomb);
+}
+
+void GameMap::gameCycle()
+{
+	std::vector<Bomb*>::iterator it = bombs.begin();
+
+	for (it = bombs.begin(); it != bombs.end(); it++) {
+
+		Bomb* bo = *it;
+		if (bo->isReadyToExplode()) {
+
+			
+			DeathMapElement *center = new DeathMapElement();
+
+			center->setX(bo->getX());
+			center->setY(bo->getY());
+
+			elements[bo->getX()][bo->getY()] = center;
+
+			int xBasic = bo->getX();
+			int yBasic = bo->getY();
+			int power = bo->getPower();
+
+			for(int x=xBasic + 1, i=0; x < mapWidthElements; )
+		
+			bombs.erase(it);
+
+			delete bo;
+			break;
+		}
+	}
+		
+	
+	
+
 }
 
 GameMap::GameMap(int mapWidthElements, int mapHeightElements)
