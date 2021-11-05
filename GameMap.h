@@ -4,6 +4,7 @@
 #include "MapElement.h"
 #include <SFML/Graphics.hpp>
 #include "Player.h"
+#include "Bomb.h"
 
 class GameMap
 {
@@ -12,8 +13,10 @@ private:
 	MapElement ***elements;
 	double singleElementWidth, singleElementHeight;
 	std::list<MapElement*> interactiveBlocks;
+	std::list<Bomb*> bombs;
 	void removeInteractiveItem(int x, int y);
 public:
+	void addBomb(Bomb* bomb);
 	GameMap(int mapWidthElements, int mapHeightElements);
 	void setElement(int x, int y, MapElement *element);
 	void clearElement(int x, int y);
