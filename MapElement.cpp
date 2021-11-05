@@ -1,4 +1,5 @@
 #include "MapElement.h"
+#include <chrono>
 
 
 sf::RectangleShape& MapElement::getToDraw()
@@ -14,6 +15,11 @@ sf::RectangleShape& MapElement::getToDraw()
 bool MapElement::isInteractive()
 {
 	return false;
+}
+
+auto MapElement::getCurrentTime()
+{
+	return std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
 }
 
 sf::FloatRect MapElement::getFloatRect()

@@ -2,6 +2,7 @@
 
 Player::Player()
 {
+	this->msDelayToPlaceBomb = 500;
 	this->playerModel = sf::RectangleShape(sf::Vector2f(5.f, 5.f));
 
 	playerModel.setPosition(sf::Vector2f(50.f, 50.f));
@@ -66,6 +67,10 @@ void Player::moveBy(sf::Vector2f position)
 	playerModel.move(position);
 }
 
+auto Player::getCurrentTime()
+{
+	return std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
+}
 
 
 sf::Vector2f Player::getCalculateMove()
@@ -105,6 +110,21 @@ void Player::setDown(std::pair<sf::Keyboard::Key, sf::Vector2f> cont)
 	down = cont;
 }
 
+void Player::setPlaceBomb(std::pair<sf::Keyboard::Key, sf::Vector2f> cont)
+{
+	this->placeBomb = cont;
+}
+
+void Player::setDelayToPlaceBomb(long msToPlaceBomb)
+{
+	this->msDelayToPlaceBomb;
+}
+
+void Player::restartBombPlaceTime()
+{
+	this->lastBombPlace = 0;
+}
+
 bool Player::isCanMoveRight(sf::FloatRect shape)
 {
 	return (!point3.getGlobalBounds().intersects(shape) && !point4.getGlobalBounds().intersects(shape) && !point5.getGlobalBounds().intersects(shape));
@@ -123,5 +143,10 @@ bool Player::isCanMoveUp(sf::FloatRect shape)
 bool Player::isCanMoveDown(sf::FloatRect shape)
 {
 	return (!point5.getGlobalBounds().intersects(shape) && !point6.getGlobalBounds().intersects(shape) && !point7.getGlobalBounds().intersects(shape));
+}
+
+bool Player::isCanPlaceBomb()
+{
+	return (lastBombPlace + msDelayToPlaceBomb) < getCurrentTime();
 }
 

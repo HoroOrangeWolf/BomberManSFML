@@ -15,6 +15,11 @@ void GameMap::removeInteractiveItem(int x, int y)
 
 }
 
+void GameMap::addBomb(Bomb* bomb)
+{
+	this->bombs.push_back(bomb);
+}
+
 GameMap::GameMap(int mapWidthElements, int mapHeightElements)
 {
 	this->elements = new MapElement ** [mapWidthElements];
