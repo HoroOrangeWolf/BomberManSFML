@@ -58,10 +58,10 @@ void GameEngine::run()
 
     auto lastFrame = getCurrentTime();
     int fpsInterval = 1000 / fps;
-    Bomb bomb;
+    Bomb *bomb = new Bomb();
 
-    bomb.setX(4);
-    bomb.setY(4);
+    bomb->setX(4);
+    bomb->setY(4);
 #
 
     while (window->isOpen())
@@ -87,7 +87,7 @@ void GameEngine::run()
         Vector2f nextMove = map->calculatePlayerMovement(player1);
 
         if (player1->isCanPlaceBomb()) {
-            map->addBomb(&bomb);
+            map->addBomb(bomb);
         }
 
         player1->moveBy(nextMove);
