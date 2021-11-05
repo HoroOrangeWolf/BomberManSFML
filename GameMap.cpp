@@ -33,6 +33,8 @@ void GameMap::gameCycle()
 			
 			DeathMapElement *center = new DeathMapElement();
 
+			deathMapElements.push_back(center);
+
 			center->setX(bo->getX());
 			center->setY(bo->getY());
 
@@ -42,7 +44,45 @@ void GameMap::gameCycle()
 			int yBasic = bo->getY();
 			int power = bo->getPower();
 
-			for(int x=xBasic + 1, i=0; x < mapWidthElements; )
+			for (int x = xBasic + 1, i = 0; i < power && x < mapWidthElements; ++x, ++i) {
+				DeathMapElement *element = new DeathMapElement();
+				deathMapElements.push_back(element);
+
+				element->setX(x);
+				element->setY(yBasic);
+
+				elements[element->getX()][element->getY()] = element;
+			}
+
+			for (int y = yBasic + 1, i = 0; i < power && y < mapHeightElements; ++y, ++i) {
+				DeathMapElement* element = new DeathMapElement();
+				deathMapElements.push_back(element);
+
+				element->setX(xBasic);
+				element->setY(y);
+
+				elements[element->getX()][element->getY()] = element;
+			}
+
+			for (int x = xBasic - 1, i = 0; i < power && x >= 0; --x, ++i) {
+				DeathMapElement* element = new DeathMapElement();
+				deathMapElements.push_back(element);
+
+				element->setX(x);
+				element->setY(yBasic);
+
+				elements[element->getX()][element->getY()] = element;
+			}
+
+			for (int y = yBasic - 1, i = 0; i < power && y >= 0; --y, ++i) {
+				DeathMapElement* element = new DeathMapElement();
+				deathMapElements.push_back(element);
+
+				element->setX(xBasic);
+				element->setY(y);
+
+				elements[element->getX()][element->getY()] = element;
+			}
 		
 			bombs.erase(it);
 
@@ -50,9 +90,25 @@ void GameMap::gameCycle()
 			break;
 		}
 	}
+
+	std::vector<DeathMapElement*>::iterator itd = deathMapElements.begin();
 		
 	
-	
+	for (itd = deathMapElements.begin(); itd != deathMapElements.end(); itd++) {
+
+		DeathMapElement* bo = *itd;
+		if (bo->isCanDisappear()) {
+
+
+		
+			elements[bo->getX()][bo->getY()] = NULL;
+
+			deathMapElements.erase(itd);
+
+			delete bo;
+			break;
+		}
+	}
 
 }
 
