@@ -1,6 +1,8 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 
+enum class Button {EXIT_BUTTON, PLAY_BUTTON};
+
 class GameMenu
 {
 private:
@@ -9,10 +11,10 @@ private:
 	sf::RectangleShape playButton;
 	sf::RectangleShape exitButton;
 	sf::Texture texture;
+	bool isMouseIn(sf::RectangleShape& shape);
 	auto getCurrentTime();
-	void initGameMenuGui();
 public:
 	GameMenu(sf::RenderWindow *window);
-	int run();
+	Button run();
 };
 

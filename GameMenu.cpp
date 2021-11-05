@@ -1,10 +1,21 @@
 #include "GameMenu.h"
 #include "GameEngine.h"
 #include <chrono>
+#include <iostream>
 
 GameMenu::GameMenu(sf::RenderWindow* window)
 {
 	this->window = window;
+}
+
+bool GameMenu::isMouseIn(sf::RectangleShape& shape)
+{
+    sf::Vector2i mousePosition = sf::Mouse::getPosition(*window);
+ 
+    sf::Vector2f position = shape.getPosition(), size = shape.getSize();
+
+   
+    return (mousePosition.x >= position.x && mousePosition.y >= position.y && mousePosition.x <= (position.x + size.x) && mousePosition.y <= (position.y + size.y));
 }
 
 auto GameMenu::getCurrentTime()
@@ -12,7 +23,7 @@ auto GameMenu::getCurrentTime()
     return std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
 }
 
-int GameMenu::run()
+Button GameMenu::run()
 {
     auto lastFrame = getCurrentTime();
     int fpsInterval = 1000 / 60;
@@ -48,6 +59,10 @@ int GameMenu::run()
     textQuit.setFillColor(sf::Color{ 255,255,255,200 });
     textQuit.setPosition(sf::Vector2f(300.f, 300.f));
 
+    this->playButton.setSize(sf::Vector2f(200.f, 50.f));
+    this->exitButton.setSize(sf::Vector2f(200.f, 50.f));
+
+
     while (window->isOpen())
     {
         sf::Event event;
@@ -56,6 +71,14 @@ int GameMenu::run()
         {
             if (event.type == sf::Event::Closed)
                 window->close();
+        }
+
+        if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)) {
+            if (isMouseIn(playButton))
+                return Button::PLAY_BUTTON;
+            else if (isMouseIn(exitButton))
+                return Button::EXIT_BUTTON;
+                
         }
 
         auto currentFrame = getCurrentTime();
@@ -70,8 +93,8 @@ int GameMenu::run()
             )
         );
         
-        this->playButton.setSize(sf::Vector2f(200.f, 50.f));
-        this->exitButton.setSize(sf::Vector2f(200.f, 50.f));
+       
+   
 
         window->clear();
         window->draw(background);
@@ -81,5 +104,5 @@ int GameMenu::run()
         window->draw(textQuit);
         window->display();
     }
-	return 0;
+	return Button::EXIT_BUTTON;
 }
