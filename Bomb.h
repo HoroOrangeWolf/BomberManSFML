@@ -15,6 +15,8 @@ public:
     void setPower(int power);
     void setMsToExplode(long msToExplode);
     bool isReadyToExplode();
+
     int getPower();
+
 };
 
