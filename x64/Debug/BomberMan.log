@@ -1,20 +1,22 @@
 ﻿  GameMap.cpp
-C:\Users\wojci\source\repos\BomberMan\BomberMan\GameMap.cpp(182,51): warning C4244: "argument": konwersja z "double" do "T", możliwa utrata danych
+C:\Users\wojci\source\repos\BomberMan\BomberMan\GameMap.cpp(61,17): warning C4244: "inicjowanie": konwersja z "double" do "int", możliwa utrata danych
+C:\Users\wojci\source\repos\BomberMan\BomberMan\GameMap.cpp(62,17): warning C4244: "inicjowanie": konwersja z "double" do "int", możliwa utrata danych
+C:\Users\wojci\source\repos\BomberMan\BomberMan\GameMap.cpp(255,51): warning C4244: "argument": konwersja z "double" do "T", możliwa utrata danych
           with
           [
               T=float
           ]
-C:\Users\wojci\source\repos\BomberMan\BomberMan\GameMap.cpp(182,31): warning C4244: "argument": konwersja z "double" do "T", możliwa utrata danych
+C:\Users\wojci\source\repos\BomberMan\BomberMan\GameMap.cpp(255,31): warning C4244: "argument": konwersja z "double" do "T", możliwa utrata danych
           with
           [
               T=float
           ]
-C:\Users\wojci\source\repos\BomberMan\BomberMan\GameMap.cpp(183,76): warning C4244: "argument": konwersja z "double" do "T", możliwa utrata danych
+C:\Users\wojci\source\repos\BomberMan\BomberMan\GameMap.cpp(256,76): warning C4244: "argument": konwersja z "double" do "T", możliwa utrata danych
           with
           [
               T=float
           ]
-C:\Users\wojci\source\repos\BomberMan\BomberMan\GameMap.cpp(183,53): warning C4244: "argument": konwersja z "double" do "T", możliwa utrata danych
+C:\Users\wojci\source\repos\BomberMan\BomberMan\GameMap.cpp(256,53): warning C4244: "argument": konwersja z "double" do "T", możliwa utrata danych
           with
           [
               T=float

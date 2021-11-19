@@ -62,6 +62,8 @@ void GameEngine::run()
 
     bomb->setX(4);
     bomb->setY(4);
+
+    map->addPlayer(*player1);
 #
 
     while (window->isOpen())
@@ -84,13 +86,7 @@ void GameEngine::run()
 
         window->clear();
         map->drawMap(window);
-        Vector2f nextMove = map->calculatePlayerMovement(player1);
-
-        if (player1->isCanPlaceBomb()) {
-            map->addBomb(bomb);
-        }
-
-        player1->moveBy(nextMove);
+   
         player1->drawPlayer(map->getSingleElementWidth(), map->getSingleElementHeight(),window);
 
 

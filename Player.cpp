@@ -48,23 +48,28 @@ void Player::drawPlayer(double width, double height, sf::RenderWindow* window)
 
 	point6.setPosition(pos.x + width/2, pos.y + height - 4.f);
 
-point7.setPosition(pos.x + 1.f, pos.y + height - 4.f);
+	point7.setPosition(pos.x + 1.f, pos.y + height - 4.f);
 
-point8.setPosition(pos.x, pos.y + height / 2);
+	point8.setPosition(pos.x, pos.y + height / 2);
 
-window->draw(point1);
-window->draw(point2);
-window->draw(point3);
-window->draw(point4);
-window->draw(point5);
-window->draw(point6);
-window->draw(point7);
-window->draw(point8);
+	window->draw(point1);
+	window->draw(point2);
+	window->draw(point3);
+	window->draw(point4);
+	window->draw(point5);
+	window->draw(point6);
+	window->draw(point7);
+	window->draw(point8);
 }
 
 void Player::moveBy(sf::Vector2f position)
 {
 	playerModel.move(position);
+}
+
+sf::Vector2f Player::getPosition()
+{
+	return this->playerModel.getPosition();
 }
 
 auto Player::getCurrentTime()
@@ -118,6 +123,16 @@ void Player::setPlaceBomb(sf::Keyboard::Key key)
 void Player::setDelayToPlaceBomb(long msToPlaceBomb)
 {
 	this->msDelayToPlaceBomb;
+}
+
+void Player::setDirection(Direction direction)
+{
+	this->direction = direction;
+}
+
+Direction Player::getDirection()
+{
+	return direction;
 }
 
 void Player::restartBombPlaceTime()

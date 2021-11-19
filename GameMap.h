@@ -16,9 +16,13 @@ private:
 	std::list<MapElement*> interactiveBlocks;
 	std::vector<Bomb*> bombs;
 	std::vector<DeathMapElement*> deathMapElements;
+	std::vector<Player*> players;
 	void removeInteractiveItem(int x, int y);
 public:
 	void addBomb(Bomb* bomb);
+	void addPlayer(Player& player);
+	void clearPlayers();
+
 	void gameCycle();
 	GameMap(int mapWidthElements, int mapHeightElements);
 	void setElement(int x, int y, MapElement *element);

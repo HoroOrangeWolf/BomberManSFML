@@ -3,6 +3,8 @@
 #include <list>
 #include <chrono>
 
+enum class Direction {LEFT, RIGHT, TOP, DOWN};
+
 class Player
 {
 private: 
@@ -12,6 +14,7 @@ private:
 	std::pair<sf::Keyboard::Key, sf::Vector2f> left;
 	std::pair<sf::Keyboard::Key, sf::Vector2f> right;
 	sf::Keyboard::Key placeBomb;
+	Direction direction = Direction::RIGHT;
 	long long msDelayToPlaceBomb;
 	long long lastBombPlace;
 
@@ -30,6 +33,7 @@ public:
 
 	void drawPlayer(double width, double height, sf::RenderWindow* window);
 	void moveBy(sf::Vector2f position);
+	sf::Vector2f getPosition();
 	sf::Vector2f getCalculateMove();
 
 	void setUp(std::pair < sf::Keyboard::Key, sf::Vector2f> cont);
@@ -38,6 +42,8 @@ public:
 	void setDown(std::pair < sf::Keyboard::Key, sf::Vector2f> cont);
 	void setPlaceBomb(sf::Keyboard::Key);
 	void setDelayToPlaceBomb(long msToPlaceBomb);
+	void setDirection(Direction direction);
+	Direction getDirection();
 	void restartBombPlaceTime();
 
 	bool isCanMoveRight(sf::FloatRect shape);

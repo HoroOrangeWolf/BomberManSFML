@@ -14,6 +14,7 @@ Bomb::Bomb(int power, long msToExplode)
 	this->msToExplode = msToExplode;
 }
 
+
 void Bomb::setPower(int power)
 {
 	this->power = power;

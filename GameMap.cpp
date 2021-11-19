@@ -15,14 +15,80 @@ void GameMap::removeInteractiveItem(int x, int y)
 
 }
 
+
+
 void GameMap::addBomb(Bomb* bomb)
 {
 	elements[bomb->getX()][bomb->getY()] = bomb;
 	this->bombs.push_back(bomb);
 }
 
+void GameMap::addPlayer(Player& player)
+{
+	players.push_back(&player);
+}
+
+void GameMap::clearPlayers()
+{
+	players.clear();
+}
+
 void GameMap::gameCycle()
 {
+
+	{
+		std::vector<Player*>::iterator it = players.begin();
+		
+		for (; it != players.end(); ++it) {
+			Player* player = *it;
+			sf::Vector2f nextMove = calculatePlayerMovement(player);
+
+			if (nextMove.x > 0)
+				player->setDirection(Direction::RIGHT);
+			else if (nextMove.x < 0)
+				player->setDirection(Direction::LEFT);
+			else if (nextMove.y > 0)
+				player->setDirection(Direction::DOWN);
+			else if (nextMove.y < 0)
+				player->setDirection(Direction::TOP);
+
+			player->moveBy(nextMove);
+
+			if (player->isCanPlaceBomb()) {
+	
+				sf::Vector2f position = player->getPosition();
+
+				int playerX = std::round(position.x / (mapWidthElements * singleElementHeight) * mapWidthElements);
+				int playerY = std::round(position.y / (mapHeightElements * singleElementHeight) * mapHeightElements);
+
+				Bomb* bomb = new Bomb();
+
+				Direction playerDirection = player->getDirection();
+
+				if (playerDirection == Direction::RIGHT && (playerX + 1) <= mapWidthElements) {
+					bomb->setX(playerX + 1);
+					bomb->setY(playerY);
+				}
+				else if (playerDirection == Direction::LEFT && (playerX - 1) >= 0) {
+					bomb->setX(playerX - 1);
+					bomb->setY(playerY);
+				}
+				else if (playerDirection == Direction::TOP && (playerY - 1) >= 0) {
+					bomb->setX(playerX);
+					bomb->setY(playerY - 1);
+				}
+				else if (playerDirection == Direction::DOWN && (playerY + 1) <= mapHeightElements) {
+					bomb->setX(playerX);
+					bomb->setY(playerY + 1);
+				}
+
+				addBomb(bomb);
+			}
+		}
+
+	}
+
+
 	std::vector<Bomb*>::iterator it = bombs.begin();
 
 	for (it = bombs.begin(); it != bombs.end(); it++) {
@@ -45,6 +111,9 @@ void GameMap::gameCycle()
 			int power = bo->getPower();
 
 			for (int x = xBasic + 1, i = 0; i < power && x < mapWidthElements; ++x, ++i) {
+				if (elements[x][yBasic] != NULL)
+					break;
+
 				DeathMapElement *element = new DeathMapElement();
 				deathMapElements.push_back(element);
 
@@ -55,6 +124,8 @@ void GameMap::gameCycle()
 			}
 
 			for (int y = yBasic + 1, i = 0; i < power && y < mapHeightElements; ++y, ++i) {
+				if (elements[xBasic][y] != NULL)
+					break;
 				DeathMapElement* element = new DeathMapElement();
 				deathMapElements.push_back(element);
 
@@ -65,6 +136,8 @@ void GameMap::gameCycle()
 			}
 
 			for (int x = xBasic - 1, i = 0; i < power && x >= 0; --x, ++i) {
+				if (elements[x][yBasic] != NULL)
+					break;
 				DeathMapElement* element = new DeathMapElement();
 				deathMapElements.push_back(element);
 
@@ -75,6 +148,8 @@ void GameMap::gameCycle()
 			}
 
 			for (int y = yBasic - 1, i = 0; i < power && y >= 0; --y, ++i) {
+				if (elements[xBasic][y] != NULL)
+					break;
 				DeathMapElement* element = new DeathMapElement();
 				deathMapElements.push_back(element);
 
@@ -83,7 +158,7 @@ void GameMap::gameCycle()
 
 				elements[element->getX()][element->getY()] = element;
 			}
-		
+	
 			bombs.erase(it);
 
 			delete bo;
@@ -99,8 +174,6 @@ void GameMap::gameCycle()
 		DeathMapElement* bo = *itd;
 		if (bo->isCanDisappear()) {
 
-
-		
 			elements[bo->getX()][bo->getY()] = NULL;
 
 			deathMapElements.erase(itd);
@@ -196,13 +269,13 @@ sf::Vector2f GameMap::calculatePlayerMovement(Player* player)
 		sf::FloatRect recta = el->getFloatRect();
 
 		if (mover.x > 0.f && !player->isCanMoveRight(recta))
-			mover.x = 0;
-		else if (mover.x < 0.f && !player->isCanMoveLeft(recta))
-			mover.x = 0;
-		else if (mover.y < 0.f && !player->isCanMoveUp(recta))
-			mover.y = 0;
-		else if (mover.y > 0.f && !player->isCanMoveDown(recta))
-			mover.y = 0;
+			mover.x = -0.1f;
+		if (mover.x < 0.f && !player->isCanMoveLeft(recta))
+			mover.x = 0.1f;
+		if (mover.y < 0.f && !player->isCanMoveUp(recta))
+			mover.y = 0.1f;
+		if (mover.y > 0.f && !player->isCanMoveDown(recta))
+			mover.y = -0.1f;
 
 	}
 
