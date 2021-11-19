@@ -34,6 +34,8 @@ public:
 	void drawPlayer(double width, double height, sf::RenderWindow* window);
 	void moveBy(sf::Vector2f position);
 	sf::Vector2f getPosition();
+	sf::Vector2f getSize();
+	void setPosition(sf::Vector2f position);
 	sf::Vector2f getCalculateMove();
 
 	void setUp(std::pair < sf::Keyboard::Key, sf::Vector2f> cont);

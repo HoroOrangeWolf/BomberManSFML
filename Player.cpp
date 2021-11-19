@@ -30,6 +30,9 @@ Player::Player()
 
 void Player::drawPlayer(double width, double height, sf::RenderWindow* window)
 {
+	width *= 0.9f;
+	height *= 0.9f;
+
 	playerModel.setSize(sf::Vector2f(width, height));
 
 	window->draw(playerModel);
@@ -70,6 +73,16 @@ void Player::moveBy(sf::Vector2f position)
 sf::Vector2f Player::getPosition()
 {
 	return this->playerModel.getPosition();
+}
+
+sf::Vector2f Player::getSize()
+{
+	return playerModel.getSize();
+}
+
+void Player::setPosition(sf::Vector2f position)
+{
+	this->playerModel.setPosition(position);
 }
 
 auto Player::getCurrentTime()

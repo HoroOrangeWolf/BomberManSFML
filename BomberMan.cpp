@@ -40,6 +40,9 @@ int main()
   
 
     gameMap.setElement(3, 3, new StaticBlock());
+    gameMap.setElement(5, 3, new StaticBlock());
+    gameMap.setElement(3, 1, new StaticBlock());
+    gameMap.setElement(5, 1, new StaticBlock());
 
     engine.setGameMap(gameMap);
     engine.setPlayer1(player);

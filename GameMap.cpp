@@ -41,16 +41,25 @@ void GameMap::gameCycle()
 		
 		for (; it != players.end(); ++it) {
 			Player* player = *it;
-			sf::Vector2f nextMove = calculatePlayerMovement(player);
 
-			if (nextMove.x > 0)
+			sf::Vector2f nextMove = calculatePlayerMovement(player);
+			sf::Vector2f playerSize = player->getSize();
+			sf::Vector2f playerPosition = player->getPosition();
+
+			if (nextMove.x > 0) {
 				player->setDirection(Direction::RIGHT);
+			
+			}
 			else if (nextMove.x < 0)
 				player->setDirection(Direction::LEFT);
-			else if (nextMove.y > 0)
+			else if (nextMove.y > 0) {
 				player->setDirection(Direction::DOWN);
-			else if (nextMove.y < 0)
+				std::cout << ((playerPosition.x + playerSize.x / 2) / (mapWidthElements * singleElementHeight) * mapWidthElements) << '\n';
+			}
+			else if (nextMove.y < 0) {
 				player->setDirection(Direction::TOP);
+				std::cout << ((playerPosition.x + playerSize.x / 2) / (mapWidthElements * singleElementHeight) * mapWidthElements) << '\n';
+			}
 
 			player->moveBy(nextMove);
 
