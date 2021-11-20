@@ -48,17 +48,64 @@ void GameMap::gameCycle()
 
 			if (nextMove.x > 0) {
 				player->setDirection(Direction::RIGHT);
-			
+				double valueX = ((playerPosition.x + playerSize.x / 2) / (mapWidthElements * singleElementHeight) * mapWidthElements);
+				double valueY = ((playerPosition.y + playerSize.y / 2) / (mapHeightElements * singleElementHeight) * mapHeightElements);
+
+				
+
+
+				int xN = (int)std::round(valueX + 0.4f);
+				int yN = (int)std::round(valueY - 0.3f);
+
+				if (xN < mapWidthElements && xN >= 0 && yN >= 0 && yN < mapHeightElements && elements[xN][yN] == NULL) {
+					player->setPosition(sf::Vector2f(playerPosition.x, yN * singleElementHeight + 5.f));
+				}
 			}
-			else if (nextMove.x < 0)
+			else if (nextMove.x < 0) {
 				player->setDirection(Direction::LEFT);
+
+				double valueX = ((playerPosition.x + playerSize.x / 2) / (mapWidthElements * singleElementHeight) * mapWidthElements);
+				double valueY = ((playerPosition.y + playerSize.y / 2) / (mapHeightElements * singleElementHeight) * mapHeightElements);
+
+				int xN = (int)std::round(valueX + 0.4f);
+				int yN = (int)std::round(valueY - 0.3f);
+
+				if (xN < mapWidthElements && xN >= 0 && yN >= 0 && yN < mapHeightElements && elements[xN][yN] == NULL) {
+					player->setPosition(sf::Vector2f(playerPosition.x, yN * singleElementHeight + 5.f));
+				}
+			}
 			else if (nextMove.y > 0) {
 				player->setDirection(Direction::DOWN);
-				std::cout << ((playerPosition.x + playerSize.x / 2) / (mapWidthElements * singleElementHeight) * mapWidthElements) << '\n';
+
+				double valueX = ((playerPosition.x + playerSize.x / 2) / (mapWidthElements * singleElementHeight) * mapWidthElements);
+				double valueY = ((playerPosition.y + playerSize.y / 2) / (mapHeightElements * singleElementHeight) * mapHeightElements);
+
+
+
+
+				int xN = (int)std::round(valueX - 0.3f);
+				int yN = (int)std::round(valueY + 0.4f);
+
+				if (xN < mapWidthElements && xN >= 0 && yN >= 0 && yN < mapHeightElements && elements[xN][yN] == NULL) {
+					player->setPosition(sf::Vector2f(xN * singleElementWidth + 5.f, playerPosition.y));
+				}
 			}
 			else if (nextMove.y < 0) {
 				player->setDirection(Direction::TOP);
-				std::cout << ((playerPosition.x + playerSize.x / 2) / (mapWidthElements * singleElementHeight) * mapWidthElements) << '\n';
+
+
+				double valueX = ((playerPosition.x + playerSize.x / 2) / (mapWidthElements * singleElementHeight) * mapWidthElements);
+				double valueY = ((playerPosition.y + playerSize.y / 2) / (mapHeightElements * singleElementHeight) * mapHeightElements);
+
+
+
+
+				int xN = (int)std::round(valueX - 0.3f);
+				int yN = (int)std::round(valueY + 0.4f);
+
+				if (xN < mapWidthElements && xN >= 0 && yN >= 0 && yN < mapHeightElements && elements[xN][yN] == NULL) {
+					player->setPosition(sf::Vector2f(xN * singleElementWidth + 5.f, playerPosition.y));
+				}
 			}
 
 			player->moveBy(nextMove);
