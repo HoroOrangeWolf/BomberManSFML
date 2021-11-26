@@ -4,6 +4,7 @@
 #include "GameEngine.h"
 #include "SoundModule.h"
 #include "GameMenu.h"
+#include "Chest.h"
 #include <iostream>
 
 int main()
@@ -24,16 +25,24 @@ int main()
     sounds.loadSounds();
     sounds.play(SoundModule::SOUNDS::CLICK);
 
-    Player player;
+    Player player1, player2;
 
-    player.setUp(std::pair<sf::Keyboard::Key, sf::Vector2f>(sf::Keyboard::W, sf::Vector2f(0.f, -0.1f)));
+    player1.setUp(std::pair<sf::Keyboard::Key, sf::Vector2f>(sf::Keyboard::W, sf::Vector2f(0.f, -0.1f)));
 
-    player.setDown(std::pair<sf::Keyboard::Key, sf::Vector2f>(sf::Keyboard::S, sf::Vector2f(0.f, 0.1f)));
+    player1.setDown(std::pair<sf::Keyboard::Key, sf::Vector2f>(sf::Keyboard::S, sf::Vector2f(0.f, 0.1f)));
 
-    player.setLeft(std::pair<sf::Keyboard::Key, sf::Vector2f>(sf::Keyboard::A, sf::Vector2f(-0.1f, 0.f)));
+    player1.setLeft(std::pair<sf::Keyboard::Key, sf::Vector2f>(sf::Keyboard::A, sf::Vector2f(-0.1f, 0.f)));
 
-    player.setRight(std::pair<sf::Keyboard::Key, sf::Vector2f>(sf::Keyboard::D, sf::Vector2f(0.1f, 0.f)));
-    player.setPlaceBomb(sf::Keyboard::Space);
+    player1.setRight(std::pair<sf::Keyboard::Key, sf::Vector2f>(sf::Keyboard::D, sf::Vector2f(0.1f, 0.f)));
+    player1.setPlaceBomb(sf::Keyboard::Space);
+
+    player2.setUp(std::pair<sf::Keyboard::Key, sf::Vector2f>(sf::Keyboard::Up, sf::Vector2f(0.f, -0.1f)));
+
+    player2.setDown(std::pair<sf::Keyboard::Key, sf::Vector2f>(sf::Keyboard::Down, sf::Vector2f(0.f, 0.1f)));
+
+    player2.setLeft(std::pair<sf::Keyboard::Key, sf::Vector2f>(sf::Keyboard::Left, sf::Vector2f(-.1f, 0.f)));
+
+    player2.setRight(std::pair<sf::Keyboard::Key, sf::Vector2f>(sf::Keyboard::Right, sf::Vector2f(0.1f, 0.f)));
 
     GameMap gameMap(10, 10);
     
@@ -43,9 +52,12 @@ int main()
     gameMap.setElement(5, 3, new StaticBlock());
     gameMap.setElement(3, 1, new StaticBlock());
     gameMap.setElement(5, 1, new StaticBlock());
+    gameMap.setElement(7, 1, new Chest(1));
+
 
     engine.setGameMap(gameMap);
-    engine.setPlayer1(player);
+    engine.addPlayer(player1);
+    engine.addPlayer(player2);
 
 
     engine.run();

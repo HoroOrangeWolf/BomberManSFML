@@ -4,12 +4,7 @@
 
 sf::RectangleShape& MapElement::getToDraw()
 {
-	shape.setFillColor(sf::Color::Transparent);
-	shape.setOutlineColor(sf::Color::Red);
-	shape.setOutlineThickness(2.f);
-
 	return shape;
-	
 }
 
 bool MapElement::isInteractive()

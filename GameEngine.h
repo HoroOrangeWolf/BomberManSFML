@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include "Player.h"
 #include "GameMap.h"
+#include <vector>
 
 using namespace sf;
 
@@ -11,16 +12,15 @@ class GameEngine
 private:
 	Color color;
 	RenderWindow *window;
-	Player* player1 = NULL;
-	Player* player2 = NULL;
 	GameMap *map = NULL;
+	std::vector<Player*> playerList;
 	int fps = 60;
 	auto getCurrentTime();
 public:
 	void setBackGroundColor(Color color);
 	GameEngine(std::string title, int width, int height);
-	void setPlayer1(Player& player);
-	void setPlayer2(Player& player);
+	void addPlayer(Player& player);
+	void clearPlayers();
 	void setFps(int fps);
 	void setGameMap(GameMap& map);
 

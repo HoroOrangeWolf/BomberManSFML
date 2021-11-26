@@ -145,8 +145,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Apple.cpp" />
     <ClCompile Include="Bomb.cpp" />
     <ClCompile Include="BomberMan.cpp" />
+    <ClCompile Include="Chest.cpp" />
     <ClCompile Include="DeathMapElement.cpp" />
     <ClCompile Include="GameEngine.cpp" />
     <ClCompile Include="GameMap.cpp" />
@@ -157,7 +159,9 @@
     <ClCompile Include="StaticBlock.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Apple.h" />
     <ClInclude Include="Bomb.h" />
+    <ClInclude Include="Chest.h" />
     <ClInclude Include="DeathMapElement.h" />
     <ClInclude Include="GameEngine.h" />
     <ClInclude Include="GameMap.h" />
