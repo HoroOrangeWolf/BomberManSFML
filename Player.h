@@ -17,6 +17,11 @@ private:
 	Direction direction = Direction::RIGHT;
 	long long msDelayToPlaceBomb;
 	long long lastBombPlace;
+	long long lastDamage = 0;
+	//ms = 2s
+	long long imortality = 2000;
+	int power = 1;
+	int maxPower = 3;
 
 	
 	sf::CircleShape point1,
@@ -38,6 +43,12 @@ public:
 	void setPosition(sf::Vector2f position);
 	sf::Vector2f getCalculateMove();
 
+	int getPower();
+	void setPower(int power);
+
+	int getMaxPower();
+	void setMaxPower(int maxPower);
+
 	void setUp(std::pair < sf::Keyboard::Key, sf::Vector2f> cont);
 	void setLeft(std::pair < sf::Keyboard::Key, sf::Vector2f> cont);
 	void setRight(std::pair < sf::Keyboard::Key, sf::Vector2f> cont);
@@ -47,6 +58,8 @@ public:
 	void setDirection(Direction direction);
 	Direction getDirection();
 	void restartBombPlaceTime();
+
+	bool isIntersect(sf::FloatRect rl);
 
 	bool isCanMoveRight(sf::FloatRect shape);
 	bool isCanMoveLeft(sf::FloatRect shape);

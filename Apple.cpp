@@ -9,3 +9,8 @@ int Apple::getPower()
 {
     return power;
 }
+
+bool Apple::isInteractive()
+{
+    return true;
+}

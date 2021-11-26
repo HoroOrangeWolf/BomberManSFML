@@ -264,6 +264,8 @@ void GameMap::gameCycle()
 						apple->setX(buff->getX());
 						apple->setY(buff->getY());
 
+						interactiveBlocks.push_back(apple);
+
 						elements[xBasic][y] = apple;;
 
 						delete buff;
@@ -384,10 +386,32 @@ sf::Vector2f GameMap::calculatePlayerMovement(Player* player)
 {
 	std::list<MapElement*>::iterator it = this->interactiveBlocks.begin();
 	sf::Vector2f mover = player->getCalculateMove();
+
 	
 	for (; it != interactiveBlocks.end(); ++it) {
 		MapElement* el = *it;
+
 		sf::FloatRect recta = el->getFloatRect();
+
+		if (player->isIntersect(recta) && std::string(typeid(*el).name()) == std::string(typeid(Apple).name()))
+		{
+			Apple* ap = (Apple*)el;
+
+			elements[el->getX()][el->getY()] = NULL;
+
+			int power = player->getPower() + ap->getPower();
+
+			if (power > player->getMaxPower())
+				power = player->getMaxPower();
+
+			player->setPower(power);
+
+			interactiveBlocks.erase(it);
+
+			delete el;
+
+			break;
+		}
 
 		if (mover.x > 0.f && !player->isCanMoveRight(recta))
 			mover.x = -0.1f;

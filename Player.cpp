@@ -108,6 +108,26 @@ sf::Vector2f Player::getCalculateMove()
 	return sf::Vector2f(0.f, 0.f);
 }
 
+int Player::getPower()
+{
+	return power;
+}
+
+void Player::setPower(int power)
+{
+	this->power = power;
+}
+
+int Player::getMaxPower()
+{
+	return maxPower;
+}
+
+void Player::setMaxPower(int maxPower)
+{
+	this->maxPower = maxPower;
+}
+
 void Player::setUp(std::pair<sf::Keyboard::Key, sf::Vector2f> cont)
 {
 	up = cont;
@@ -151,6 +171,13 @@ Direction Player::getDirection()
 void Player::restartBombPlaceTime()
 {
 	this->lastBombPlace = 0;
+}
+
+bool Player::isIntersect(sf::FloatRect rl)
+{
+	return (point1.getGlobalBounds().intersects(rl) || point2.getGlobalBounds().intersects(rl) || point3.getGlobalBounds().intersects(rl) ||
+		point4.getGlobalBounds().intersects(rl) || point5.getGlobalBounds().intersects(rl) || point6.getGlobalBounds().intersects(rl) ||
+		point7.getGlobalBounds().intersects(rl) || point8.getGlobalBounds().intersects(rl));
 }
 
 bool Player::isCanMoveRight(sf::FloatRect shape)

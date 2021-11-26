@@ -1,6 +1,4 @@
-﻿  BomberMan.cpp
-  GameEngine.cpp
-  GameMap.cpp
+﻿  GameMap.cpp
 C:\Users\wojci\source\repos\BomberMan\BomberMan\GameMap.cpp(61,82): warning C4244: "argument": konwersja z "double" do "T", możliwa utrata danych
           with
           [
@@ -23,26 +21,24 @@ C:\Users\wojci\source\repos\BomberMan\BomberMan\GameMap.cpp(107,63): warning C42
           ]
 C:\Users\wojci\source\repos\BomberMan\BomberMan\GameMap.cpp(117,17): warning C4244: "inicjowanie": konwersja z "double" do "int", możliwa utrata danych
 C:\Users\wojci\source\repos\BomberMan\BomberMan\GameMap.cpp(118,17): warning C4244: "inicjowanie": konwersja z "double" do "int", możliwa utrata danych
-C:\Users\wojci\source\repos\BomberMan\BomberMan\GameMap.cpp(376,51): warning C4244: "argument": konwersja z "double" do "T", możliwa utrata danych
+C:\Users\wojci\source\repos\BomberMan\BomberMan\GameMap.cpp(378,51): warning C4244: "argument": konwersja z "double" do "T", możliwa utrata danych
           with
           [
               T=float
           ]
-C:\Users\wojci\source\repos\BomberMan\BomberMan\GameMap.cpp(376,31): warning C4244: "argument": konwersja z "double" do "T", możliwa utrata danych
+C:\Users\wojci\source\repos\BomberMan\BomberMan\GameMap.cpp(378,31): warning C4244: "argument": konwersja z "double" do "T", możliwa utrata danych
           with
           [
               T=float
           ]
-C:\Users\wojci\source\repos\BomberMan\BomberMan\GameMap.cpp(377,76): warning C4244: "argument": konwersja z "double" do "T", możliwa utrata danych
+C:\Users\wojci\source\repos\BomberMan\BomberMan\GameMap.cpp(379,76): warning C4244: "argument": konwersja z "double" do "T", możliwa utrata danych
           with
           [
               T=float
           ]
-C:\Users\wojci\source\repos\BomberMan\BomberMan\GameMap.cpp(377,53): warning C4244: "argument": konwersja z "double" do "T", możliwa utrata danych
+C:\Users\wojci\source\repos\BomberMan\BomberMan\GameMap.cpp(379,53): warning C4244: "argument": konwersja z "double" do "T", możliwa utrata danych
           with
           [
               T=float
           ]
-  GameMenu.cpp
-  Generowanie kodu...
   BomberMan.vcxproj -> C:\Users\wojci\source\repos\BomberMan\x64\Debug\BomberMan.exe

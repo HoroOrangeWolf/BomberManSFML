@@ -12,6 +12,7 @@ public:
     }
     void setPower(int power);
     int getPower();
+    bool isInteractive() override;
 
 };
 
