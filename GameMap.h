@@ -6,6 +6,8 @@
 #include "Player.h"
 #include "Bomb.h"
 #include "DeathMapElement.h"
+#include "Apple.h"
+#include "Chest.h"
 
 class GameMap
 {

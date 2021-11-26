@@ -43,10 +43,6 @@ void GameEngine::run()
 {
     auto lastFrame = getCurrentTime();
     int fpsInterval = 1000 / fps;
-    Bomb *bomb = new Bomb();
-
-    bomb->setX(4);
-    bomb->setY(4);
 
     for (int i = 0; i < playerList.size(); ++i)
         map->addPlayer(*playerList[i]);

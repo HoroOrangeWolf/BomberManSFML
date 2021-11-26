@@ -167,8 +167,22 @@ void GameMap::gameCycle()
 			int power = bo->getPower();
 
 			for (int x = xBasic + 1, i = 0; i < power && x < mapWidthElements; ++x, ++i) {
-				if (elements[x][yBasic] != NULL)
+				MapElement* buff = elements[x][yBasic];
+				if (buff != NULL)
+				{
+					if (std::string(typeid(*buff).name()) == std::string(typeid(Chest).name()))
+					{
+						Apple* apple = new Apple(((Chest*)buff)->getPower());
+
+						apple->setX(buff->getX());
+						apple->setY(buff->getY());
+
+						elements[x][yBasic] = apple;
+
+						delete buff;
+					}
 					break;
+				}
 
 				DeathMapElement *element = new DeathMapElement();
 				deathMapElements.push_back(element);
@@ -180,8 +194,25 @@ void GameMap::gameCycle()
 			}
 
 			for (int y = yBasic + 1, i = 0; i < power && y < mapHeightElements; ++y, ++i) {
-				if (elements[xBasic][y] != NULL)
+
+				MapElement* buff = elements[xBasic][y];
+				if (buff != NULL)
+				{
+					if (std::string(typeid(*buff).name()) == std::string(typeid(Chest).name()))
+					{
+
+						Apple* apple = new Apple(((Chest*)buff)->getPower());
+
+						apple->setX(buff->getX());
+						apple->setY(buff->getY());
+
+						elements[xBasic][y] = apple;
+
+						delete buff;
+					}
 					break;
+				}
+
 				DeathMapElement* element = new DeathMapElement();
 				deathMapElements.push_back(element);
 
@@ -192,8 +223,25 @@ void GameMap::gameCycle()
 			}
 
 			for (int x = xBasic - 1, i = 0; i < power && x >= 0; --x, ++i) {
-				if (elements[x][yBasic] != NULL)
+
+				MapElement* buff = elements[x][yBasic];
+				if (buff != NULL)
+				{
+					if (std::string(typeid(*buff).name()) == std::string(typeid(Chest).name()))
+					{
+						Apple* apple = new Apple(((Chest*)buff)->getPower());
+
+						apple->setX(buff->getX());
+						apple->setY(buff->getY());
+
+						elements[x][yBasic] = apple;
+
+						delete buff;
+					}
 					break;
+				}
+
+
 				DeathMapElement* element = new DeathMapElement();
 				deathMapElements.push_back(element);
 
@@ -204,8 +252,25 @@ void GameMap::gameCycle()
 			}
 
 			for (int y = yBasic - 1, i = 0; i < power && y >= 0; --y, ++i) {
-				if (elements[xBasic][y] != NULL)
+
+				MapElement* buff = elements[xBasic][y];
+
+				if (buff != NULL)
+				{
+					if (std::string(typeid(*buff).name()) == std::string(typeid(Chest).name()))
+					{
+						Apple* apple = new Apple(((Chest*)buff)->getPower());
+
+						apple->setX(buff->getX());
+						apple->setY(buff->getY());
+
+						elements[xBasic][y] = apple;;
+
+						delete buff;
+					}
 					break;
+				}
+
 				DeathMapElement* element = new DeathMapElement();
 				deathMapElements.push_back(element);
 
@@ -326,10 +391,13 @@ sf::Vector2f GameMap::calculatePlayerMovement(Player* player)
 
 		if (mover.x > 0.f && !player->isCanMoveRight(recta))
 			mover.x = -0.1f;
+
 		if (mover.x < 0.f && !player->isCanMoveLeft(recta))
 			mover.x = 0.1f;
+
 		if (mover.y < 0.f && !player->isCanMoveUp(recta))
 			mover.y = 0.1f;
+
 		if (mover.y > 0.f && !player->isCanMoveDown(recta))
 			mover.y = -0.1f;
 
