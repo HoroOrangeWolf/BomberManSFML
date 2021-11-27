@@ -1,8 +1,11 @@
 #pragma once
 
 #include <vector>
-#include "MapElement.h"
 #include <SFML/Graphics.hpp>
+#include <fstream>
+#include <string>
+#include <sstream>
+#include "MapElement.h"
 #include "Player.h"
 #include "Bomb.h"
 #include "DeathMapElement.h"
@@ -21,12 +24,13 @@ private:
 	std::vector<Player*> players;
 	void removeInteractiveItem(int x, int y);
 public:
+	GameMap(int mapWidthElements, int mapHeightElements);
+
 	void addBomb(Bomb* bomb);
 	void addPlayer(Player& player);
 	void clearPlayers();
 
 	void gameCycle();
-	GameMap(int mapWidthElements, int mapHeightElements);
 	void setElement(int x, int y, MapElement *element);
 	void clearElement(int x, int y);
 	double getSingleElementWidth();
@@ -34,6 +38,8 @@ public:
 	MapElement* getElement(int x, int y);
 	void drawMap(sf::RenderWindow* window);
 	sf::Vector2f calculatePlayerMovement(Player* player);
+
+	static GameMap loadMapFromFile(std::string path);
 
 
 };

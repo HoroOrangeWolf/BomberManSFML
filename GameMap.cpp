@@ -178,7 +178,7 @@ void GameMap::gameCycle()
 						apple->setY(buff->getY());
 
 						elements[x][yBasic] = apple;
-
+						interactiveBlocks.remove(buff);
 						delete buff;
 					}
 					break;
@@ -207,7 +207,7 @@ void GameMap::gameCycle()
 						apple->setY(buff->getY());
 
 						elements[xBasic][y] = apple;
-
+						interactiveBlocks.remove(buff);
 						delete buff;
 					}
 					break;
@@ -235,6 +235,7 @@ void GameMap::gameCycle()
 						apple->setY(buff->getY());
 
 						elements[x][yBasic] = apple;
+						interactiveBlocks.remove(buff);
 
 						delete buff;
 					}
@@ -265,6 +266,7 @@ void GameMap::gameCycle()
 						apple->setY(buff->getY());
 
 						interactiveBlocks.push_back(apple);
+						interactiveBlocks.remove(buff);
 
 						elements[xBasic][y] = apple;;
 
@@ -428,6 +430,66 @@ sf::Vector2f GameMap::calculatePlayerMovement(Player* player)
 	}
 
 	return mover;
+}
+
+GameMap GameMap::loadMapFromFile(std::string path)
+{
+	std::ifstream file(path);
+
+	int width, height;
+
+	std::string buff;
+	std::stringstream stream;
+
+
+	if (!std::getline(file, buff))
+		throw "Invalid File!";
+
+
+	stream << buff;
+
+
+	stream >> width;
+
+
+	stream.str(std::string());
+	stream.clear();
+
+	if (!std::getline(file, buff))
+		throw "Invalid File!";
+
+
+	stream << buff;
+
+	stream >> height;
+
+	stream.str("");
+
+	std::cout << width << ' ' << height;
+
+	GameMap map(width, height);
+
+
+	for (int y = 0, x; y < height; ++y)
+	{
+		if (!std::getline(file, buff))
+			throw "Invalid File!";
+
+		for (x = 0; x < width; ++x) {
+
+			switch (buff[x])
+			{
+			case '_':
+				std::cout << "TAK ";
+			default:
+				break;
+			}
+
+		}
+		std::cout << '\n';
+	}
+
+	return map;
 }
 
 

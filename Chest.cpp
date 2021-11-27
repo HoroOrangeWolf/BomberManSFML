@@ -9,3 +9,8 @@ int Chest::getPower()
 {
     return power;
 }
+
+bool Chest::isInteractive()
+{
+    return true;
+}

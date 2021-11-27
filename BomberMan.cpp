@@ -11,6 +11,8 @@ int main()
 {
     GameEngine engine("Sfml", 700, 700);
     GameMenu menu(engine.getWindow());
+
+    GameMap::loadMapFromFile("maps/map.txt");
     
     Button bt = menu.run();
 
