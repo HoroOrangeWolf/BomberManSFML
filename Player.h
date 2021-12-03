@@ -2,8 +2,8 @@
 #include <SFML/Graphics.hpp>
 #include <list>
 #include <chrono>
-
-enum class Direction {LEFT, RIGHT, TOP, DOWN};
+#include "HealthBar.h"
+#include "Direction.h"
 
 class Player
 {
@@ -18,6 +18,7 @@ private:
 	long long msDelayToPlaceBomb;
 	long long lastBombPlace;
 	long long lastDamage = 0;
+	HealthBar healthBar;
 	//ms = 2s
 	long long imortality = 2000;
 	int power = 1;
@@ -44,6 +45,8 @@ public:
 
 	int getMaxPower();
 	void setMaxPower(int maxPower);
+
+	void setHealthBar(HealthBar healthBar);
 
 	void setUp(std::pair < sf::Keyboard::Key, sf::Vector2f> cont);
 	void setLeft(std::pair < sf::Keyboard::Key, sf::Vector2f> cont);

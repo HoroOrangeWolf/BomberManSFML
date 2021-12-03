@@ -153,6 +153,7 @@
     <ClCompile Include="GameEngine.cpp" />
     <ClCompile Include="GameMap.cpp" />
     <ClCompile Include="GameMenu.cpp" />
+    <ClCompile Include="HealthBar.cpp" />
     <ClCompile Include="MapElement.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="SoundModule.cpp" />
@@ -163,9 +164,11 @@
     <ClInclude Include="Bomb.h" />
     <ClInclude Include="Chest.h" />
     <ClInclude Include="DeathMapElement.h" />
+    <ClInclude Include="Direction.h" />
     <ClInclude Include="GameEngine.h" />
     <ClInclude Include="GameMap.h" />
     <ClInclude Include="GameMenu.h" />
+    <ClInclude Include="HealthBar.h" />
     <ClInclude Include="MapElement.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="SoundModule.h" />
