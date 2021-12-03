@@ -5,6 +5,7 @@ class Chest :
 {
 private:
     int power = 0;
+
 public:
     Chest(int power) {
         this->shape.setFillColor(sf::Color::Blue);

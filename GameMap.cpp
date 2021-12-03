@@ -147,7 +147,7 @@ void GameMap::gameCycle()
 
 	}
 
-
+	//Tu jest sprawdzanie wybuchów
 	std::vector<Bomb*>::iterator it = bombs.begin();
 
 	for (it = bombs.begin(); it != bombs.end(); it++) {
@@ -167,8 +167,11 @@ void GameMap::gameCycle()
 
 			int xBasic = bo->getX();
 			int yBasic = bo->getY();
-			int power = bo->getPower();
-
+			//Do testów ustawiæ power na 2
+			//Odkomentowaæ po testach
+			//int power = bo->getPower();
+			int power = 2;
+			//Leci w prawo wybuch
 			for (int x = xBasic + 1, i = 0; i < power && x < mapWidthElements; ++x, ++i) {
 				MapElement* buff = elements[x][yBasic];
 				if (buff != NULL)
@@ -187,6 +190,8 @@ void GameMap::gameCycle()
 					break;
 				}
 
+				//Ostatni element wybuchu to i == power-1 <- to najwa¿niejsze lub x == mapWidthElements - 1 tym drugim nie trzeba siê przejmowaæ
+
 				DeathMapElement *element = new DeathMapElement();
 				deathMapElements.push_back(element);
 
@@ -194,8 +199,9 @@ void GameMap::gameCycle()
 				element->setY(yBasic);
 
 				elements[element->getX()][element->getY()] = element;
+				
 			}
-
+			//Leci w dó³ wybuch
 			for (int y = yBasic + 1, i = 0; i < power && y < mapHeightElements; ++y, ++i) {
 
 				MapElement* buff = elements[xBasic][y];
@@ -224,7 +230,7 @@ void GameMap::gameCycle()
 
 				elements[element->getX()][element->getY()] = element;
 			}
-
+			//Leci w lewo wybuch
 			for (int x = xBasic - 1, i = 0; i < power && x >= 0; --x, ++i) {
 
 				MapElement* buff = elements[x][yBasic];
@@ -254,7 +260,7 @@ void GameMap::gameCycle()
 
 				elements[element->getX()][element->getY()] = element;
 			}
-
+			//Leci w góre wybuch
 			for (int y = yBasic - 1, i = 0; i < power && y >= 0; --y, ++i) {
 
 				MapElement* buff = elements[xBasic][y];
