@@ -485,7 +485,7 @@ GameMap GameMap::loadMapFromFile(std::string path)
 			case '*':
 				map.setElement(x, y, new StaticBlock());
 				break;
-			case '_':
+			case 's':
 				break;
 			default:
 				chestPower = buff[x] - '0';

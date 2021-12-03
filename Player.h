@@ -27,11 +27,7 @@ private:
 	sf::CircleShape point1,
 		point2,
 		point3,
-		point4,
-		point5,
-		point6,
-		point7,
-		point8;
+		point4;
 
 public:
 	Player();
