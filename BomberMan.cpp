@@ -10,7 +10,9 @@
 int main()
 {
     GameEngine engine("Sfml", 700, 700);
+    HealthBar::loadHealthTextureFromFile("images/heart.png");
     GameMenu menu(engine.getWindow());
+
     
     Button bt = menu.run();
 
@@ -26,6 +28,11 @@ int main()
     sounds.play(SoundModule::SOUNDS::CLICK);
 
     Player player1, player2;
+
+    HealthBar health(sf::Vector2f(0.f, 0.f), 3);
+    health.setDrawDirection(Direction::LEFT);
+
+    player2.setHealthBar(health);
 
     player1.setUp(std::pair<sf::Keyboard::Key, sf::Vector2f>(sf::Keyboard::W, sf::Vector2f(0.f, -0.1f)));
 

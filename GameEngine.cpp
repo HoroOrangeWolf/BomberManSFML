@@ -2,6 +2,7 @@
 #include <chrono>
 #include "Bomb.h"
 #include <iostream>
+#include "HealthBar.h"
 
 void GameEngine::setBackGroundColor(Color color)
 {
@@ -46,7 +47,7 @@ void GameEngine::run()
 
     for (int i = 0; i < playerList.size(); ++i)
         map->addPlayer(*playerList[i]);
-
+  
     while (window->isOpen())
     {
         sf::Event event;
@@ -69,7 +70,7 @@ void GameEngine::run()
         map->drawMap(window);
 
         for(int i = 0; i < playerList.size(); ++i)
-            playerList[i]->drawPlayer(map->getSingleElementWidth(), map->getSingleElementHeight(),window);
+            playerList[i]->drawPlayer(map->getSingleElementWidth(), map->getSingleElementHeight(), window);
 
         window->display();
     }

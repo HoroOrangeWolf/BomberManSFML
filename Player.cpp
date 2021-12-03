@@ -22,6 +22,8 @@ Player::Player()
 	down = std::pair<sf::Keyboard::Key, sf::Vector2f>(sf::Keyboard::W, sf::Vector2f(0.f, 0.f));
 	left = std::pair<sf::Keyboard::Key, sf::Vector2f>(sf::Keyboard::W, sf::Vector2f(0.f, 0.f));
 	right = std::pair<sf::Keyboard::Key, sf::Vector2f>(sf::Keyboard::W, sf::Vector2f(0.f, 0.f));
+
+	this->healthBar = HealthBar(sf::Vector2f(0.f, 0.f), 3);
 }
 
 void Player::drawPlayer(double width, double height, sf::RenderWindow* window)
@@ -47,6 +49,7 @@ void Player::drawPlayer(double width, double height, sf::RenderWindow* window)
 	window->draw(point2);
 	window->draw(point3);
 	window->draw(point4);
+	healthBar.draw(window);
 }
 
 void Player::moveBy(sf::Vector2f position)
@@ -110,6 +113,11 @@ int Player::getMaxPower()
 void Player::setMaxPower(int maxPower)
 {
 	this->maxPower = maxPower;
+}
+
+void Player::setHealthBar(HealthBar healthBar)
+{
+	this->healthBar = healthBar;
 }
 
 void Player::setUp(std::pair<sf::Keyboard::Key, sf::Vector2f> cont)
