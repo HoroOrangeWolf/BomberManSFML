@@ -5,7 +5,7 @@ Player::Player()
 	this->msDelayToPlaceBomb = 500;
 	this->playerModel = sf::RectangleShape(sf::Vector2f(5.f, 5.f));
 
-	playerModel.setPosition(sf::Vector2f(50.f, 50.f));
+	playerModel.setPosition(sf::Vector2f(100.f, 100.f));
 
 	this->playerModel.setFillColor(sf::Color::Blue);
 

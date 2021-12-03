@@ -1,5 +1,8 @@
 #include "GameMap.h"
 #include <iostream>
+#include "StaticBlock.h"
+#include "Chest.h"
+#include "Apple.h"
 
 void GameMap::removeInteractiveItem(int x, int y)
 {
@@ -58,7 +61,7 @@ void GameMap::gameCycle()
 				int yN = (int)std::round(valueY - 0.3f);
 
 				if (xN < mapWidthElements && xN >= 0 && yN >= 0 && yN < mapHeightElements && elements[xN][yN] == NULL) {
-					player->setPosition(sf::Vector2f(playerPosition.x, yN * singleElementHeight + 5.f));
+					player->setPosition(sf::Vector2f(playerPosition.x, yN * singleElementHeight + 3.f));
 				}
 			}
 			else if (nextMove.x < 0) {
@@ -71,7 +74,7 @@ void GameMap::gameCycle()
 				int yN = (int)std::round(valueY - 0.3f);
 
 				if (xN < mapWidthElements && xN >= 0 && yN >= 0 && yN < mapHeightElements && elements[xN][yN] == NULL) {
-					player->setPosition(sf::Vector2f(playerPosition.x, yN * singleElementHeight + 5.f));
+					player->setPosition(sf::Vector2f(playerPosition.x, yN * singleElementHeight + 3.f));
 				}
 			}
 			else if (nextMove.y > 0) {
@@ -87,7 +90,7 @@ void GameMap::gameCycle()
 				int yN = (int)std::round(valueY + 0.4f);
 
 				if (xN < mapWidthElements && xN >= 0 && yN >= 0 && yN < mapHeightElements && elements[xN][yN] == NULL) {
-					player->setPosition(sf::Vector2f(xN * singleElementWidth + 5.f, playerPosition.y));
+					player->setPosition(sf::Vector2f(xN * singleElementWidth + 3.f, playerPosition.y));
 				}
 			}
 			else if (nextMove.y < 0) {
@@ -104,7 +107,7 @@ void GameMap::gameCycle()
 				int yN = (int)std::round(valueY + 0.4f);
 
 				if (xN < mapWidthElements && xN >= 0 && yN >= 0 && yN < mapHeightElements && elements[xN][yN] == NULL) {
-					player->setPosition(sf::Vector2f(xN * singleElementWidth + 5.f, playerPosition.y));
+					player->setPosition(sf::Vector2f(xN * singleElementWidth + 3.f, playerPosition.y));
 				}
 			}
 
@@ -422,10 +425,10 @@ sf::Vector2f GameMap::calculatePlayerMovement(Player* player)
 			mover.x = 0.1f;
 
 		if (mover.y < 0.f && !player->isCanMoveUp(recta))
-			mover.y = 0.1f;
+			mover.y = 0.0f;
 
 		if (mover.y > 0.f && !player->isCanMoveDown(recta))
-			mover.y = -0.1f;
+			mover.y = 0.0f;
 
 	}
 
@@ -465,10 +468,10 @@ GameMap GameMap::loadMapFromFile(std::string path)
 
 	stream.str("");
 
-	std::cout << width << ' ' << height;
-
 	GameMap map(width, height);
 
+
+	int chestPower = 0;
 
 	for (int y = 0, x; y < height; ++y)
 	{
@@ -479,14 +482,18 @@ GameMap GameMap::loadMapFromFile(std::string path)
 
 			switch (buff[x])
 			{
+			case '*':
+				map.setElement(x, y, new StaticBlock());
+				break;
 			case '_':
-				std::cout << "TAK ";
+				break;
 			default:
+				chestPower = buff[x] - '0';
+				map.setElement(x, y, new Chest(chestPower));
 				break;
 			}
 
 		}
-		std::cout << '\n';
 	}
 
 	return map;

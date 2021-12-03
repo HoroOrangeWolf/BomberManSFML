@@ -11,8 +11,6 @@ int main()
 {
     GameEngine engine("Sfml", 700, 700);
     GameMenu menu(engine.getWindow());
-
-    GameMap::loadMapFromFile("maps/map.txt");
     
     Button bt = menu.run();
 
@@ -46,17 +44,8 @@ int main()
 
     player2.setRight(std::pair<sf::Keyboard::Key, sf::Vector2f>(sf::Keyboard::Right, sf::Vector2f(0.1f, 0.f)));
 
-    GameMap gameMap(10, 10);
+    GameMap gameMap = GameMap::loadMapFromFile("maps/map.txt");;
     
-  
-
-    gameMap.setElement(3, 3, new StaticBlock());
-    gameMap.setElement(5, 3, new StaticBlock());
-    gameMap.setElement(3, 1, new StaticBlock());
-    gameMap.setElement(5, 1, new StaticBlock());
-    gameMap.setElement(7, 1, new Chest(1));
-
-
     engine.setGameMap(gameMap);
     engine.addPlayer(player1);
     engine.addPlayer(player2);

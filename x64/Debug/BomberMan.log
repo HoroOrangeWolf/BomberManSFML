@@ -1,44 +1,22 @@
-﻿  GameMap.cpp
-C:\Users\wojci\source\repos\BomberMan\BomberMan\GameMap.cpp(61,82): warning C4244: "argument": konwersja z "double" do "T", możliwa utrata danych
+﻿  Player.cpp
+C:\Users\wojci\source\repos\BomberMan\BomberMan\Player.cpp(36,42): warning C4244: "argument": konwersja z "double" do "T", możliwa utrata danych
           with
           [
               T=float
           ]
-C:\Users\wojci\source\repos\BomberMan\BomberMan\GameMap.cpp(74,82): warning C4244: "argument": konwersja z "double" do "T", możliwa utrata danych
+C:\Users\wojci\source\repos\BomberMan\BomberMan\Player.cpp(36,35): warning C4244: "argument": konwersja z "double" do "T", możliwa utrata danych
           with
           [
               T=float
           ]
-C:\Users\wojci\source\repos\BomberMan\BomberMan\GameMap.cpp(90,63): warning C4244: "argument": konwersja z "double" do "T", możliwa utrata danych
-          with
-          [
-              T=float
-          ]
-C:\Users\wojci\source\repos\BomberMan\BomberMan\GameMap.cpp(107,63): warning C4244: "argument": konwersja z "double" do "T", możliwa utrata danych
-          with
-          [
-              T=float
-          ]
-C:\Users\wojci\source\repos\BomberMan\BomberMan\GameMap.cpp(117,17): warning C4244: "inicjowanie": konwersja z "double" do "int", możliwa utrata danych
-C:\Users\wojci\source\repos\BomberMan\BomberMan\GameMap.cpp(118,17): warning C4244: "inicjowanie": konwersja z "double" do "int", możliwa utrata danych
-C:\Users\wojci\source\repos\BomberMan\BomberMan\GameMap.cpp(380,51): warning C4244: "argument": konwersja z "double" do "T", możliwa utrata danych
-          with
-          [
-              T=float
-          ]
-C:\Users\wojci\source\repos\BomberMan\BomberMan\GameMap.cpp(380,31): warning C4244: "argument": konwersja z "double" do "T", możliwa utrata danych
-          with
-          [
-              T=float
-          ]
-C:\Users\wojci\source\repos\BomberMan\BomberMan\GameMap.cpp(381,76): warning C4244: "argument": konwersja z "double" do "T", możliwa utrata danych
-          with
-          [
-              T=float
-          ]
-C:\Users\wojci\source\repos\BomberMan\BomberMan\GameMap.cpp(381,53): warning C4244: "argument": konwersja z "double" do "T", możliwa utrata danych
-          with
-          [
-              T=float
-          ]
+C:\Users\wojci\source\repos\BomberMan\BomberMan\Player.cpp(44,27): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
+C:\Users\wojci\source\repos\BomberMan\BomberMan\Player.cpp(46,35): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
+C:\Users\wojci\source\repos\BomberMan\BomberMan\Player.cpp(48,48): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
+C:\Users\wojci\source\repos\BomberMan\BomberMan\Player.cpp(48,35): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
+C:\Users\wojci\source\repos\BomberMan\BomberMan\Player.cpp(50,57): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
+C:\Users\wojci\source\repos\BomberMan\BomberMan\Player.cpp(50,35): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
+C:\Users\wojci\source\repos\BomberMan\BomberMan\Player.cpp(52,53): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
+C:\Users\wojci\source\repos\BomberMan\BomberMan\Player.cpp(52,27): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
+C:\Users\wojci\source\repos\BomberMan\BomberMan\Player.cpp(54,49): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
+C:\Users\wojci\source\repos\BomberMan\BomberMan\Player.cpp(56,34): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
   BomberMan.vcxproj -> C:\Users\wojci\source\repos\BomberMan\x64\Debug\BomberMan.exe
