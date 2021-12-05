@@ -191,7 +191,6 @@ void GameMap::gameCycle()
 			//Odkomentowa� po testach
 			//int power = bo->getPower();
 			int power = bo->getPower();
-
 			//Leci w prawo wybuch
 			for (int x = xBasic + 1, i = 0; i < power && x < mapWidthElements; ++x, ++i) {
 				MapElement* buff = elements[x][yBasic];
