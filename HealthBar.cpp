@@ -4,7 +4,7 @@ HealthBar::HealthBar(sf::Vector2f position, int healthPoints)
 {
 	this->position = position;
 	this->healthPoints = healthPoints;
-	shape.setFillColor(sf::Color::Cyan);
+	texture.loadFromFile("images/kuba_heart.png");
 	shape.setTexture(&texture);
 	drawDirect = Direction::RIGHT;
 }
@@ -13,7 +13,7 @@ HealthBar::HealthBar()
 {
 	this->position = sf::Vector2f(0.f, 0.f);
 	healthPoints = 3;
-	shape.setFillColor(sf::Color::Cyan);
+	texture.loadFromFile("images/kuba_heart.png");
 	shape.setTexture(&texture);
 	drawDirect = Direction::RIGHT;
 }

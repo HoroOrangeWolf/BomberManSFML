@@ -17,6 +17,12 @@ void DeathMapElement::setMsToDisappear(long msToDisappear)
 	this->msToDisappear = msToDisappear;
 }
 
+void DeathMapElement::setTexture(std::string path)
+{
+	deathElementTexture.loadFromFile(path);
+	shape.setTexture(&deathElementTexture);
+}
+
 bool DeathMapElement::isCanDisappear()
 {
 	return (creationTime + msToDisappear) < getCurrentTime();

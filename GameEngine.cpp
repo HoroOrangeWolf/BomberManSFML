@@ -4,11 +4,6 @@
 #include <iostream>
 #include "HealthBar.h"
 
-void GameEngine::setBackGroundColor(Color color)
-{
-	this->color = color;
-}
-
 GameEngine::GameEngine(std::string title, int width, int height)
 {
 	window = new RenderWindow(sf::VideoMode(width, height), "SFML");
@@ -45,6 +40,10 @@ void GameEngine::run()
     auto lastFrame = getCurrentTime();
     int fpsInterval = 1000 / fps;
 
+    texture.loadFromFile("images/map_background.png");
+    shape.setTexture(&texture);
+    shape.setPosition(0, 0);
+
     for (int i = 0; i < playerList.size(); ++i)
         map->addPlayer(*playerList[i]);
   
@@ -67,6 +66,8 @@ void GameEngine::run()
         map->gameCycle();
 
         window->clear();
+        shape.setSize(sf::Vector2f(window->getSize()));
+        window->draw(shape);
         map->drawMap(window);
 
         for(int i = 0; i < playerList.size(); ++i)

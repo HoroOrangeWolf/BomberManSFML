@@ -16,8 +16,9 @@ private:
 	std::vector<Player*> playerList;
 	int fps = 60;
 	auto getCurrentTime();
+	sf::RectangleShape shape;
+	sf::Texture texture;
 public:
-	void setBackGroundColor(Color color);
 	GameEngine(std::string title, int width, int height);
 	void addPlayer(Player& player);
 	void clearPlayers();

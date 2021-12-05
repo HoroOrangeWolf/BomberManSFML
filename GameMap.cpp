@@ -158,6 +158,8 @@ void GameMap::gameCycle()
 			
 			DeathMapElement *center = new DeathMapElement();
 
+			center->setTexture("images/explo_mid.png");
+
 			deathMapElements.push_back(center);
 
 			center->setX(bo->getX());
@@ -170,7 +172,7 @@ void GameMap::gameCycle()
 			//Do testów ustawiæ power na 2
 			//Odkomentowaæ po testach
 			//int power = bo->getPower();
-			int power = 2;
+			int power = 3;
 			//Leci w prawo wybuch
 			for (int x = xBasic + 1, i = 0; i < power && x < mapWidthElements; ++x, ++i) {
 				MapElement* buff = elements[x][yBasic];
@@ -193,6 +195,14 @@ void GameMap::gameCycle()
 				//Ostatni element wybuchu to i == power-1 <- to najwa¿niejsze lub x == mapWidthElements - 1 tym drugim nie trzeba siê przejmowaæ
 
 				DeathMapElement *element = new DeathMapElement();
+
+				if (i == power - 1) {
+					element->setTexture("images/explo_right_end.png");
+				}
+				else {
+					element->setTexture("images/explo_right.png");
+				}
+
 				deathMapElements.push_back(element);
 
 				element->setX(x);
@@ -223,6 +233,14 @@ void GameMap::gameCycle()
 				}
 
 				DeathMapElement* element = new DeathMapElement();
+
+				if (i == power - 1) {
+					element->setTexture("images/explo_down_end.png");
+				}
+				else {
+					element->setTexture("images/explo_down.png");
+				}
+
 				deathMapElements.push_back(element);
 
 				element->setX(xBasic);
@@ -253,6 +271,14 @@ void GameMap::gameCycle()
 
 
 				DeathMapElement* element = new DeathMapElement();
+
+				if (i == power - 1) {
+					element->setTexture("images/explo_left_end.png");
+				}
+				else {
+					element->setTexture("images/explo_left.png");
+				}
+
 				deathMapElements.push_back(element);
 
 				element->setX(x);
@@ -285,6 +311,14 @@ void GameMap::gameCycle()
 				}
 
 				DeathMapElement* element = new DeathMapElement();
+
+				if (i == power - 1) {
+					element->setTexture("images/explo_up_end.png");
+				}
+				else {
+					element->setTexture("images/explo_up.png");
+				}
+
 				deathMapElements.push_back(element);
 
 				element->setX(xBasic);
