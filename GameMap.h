@@ -22,6 +22,7 @@ private:
 	std::vector<Bomb*> bombs;
 	std::vector<DeathMapElement*> deathMapElements;
 	std::vector<Player*> players;
+	std::vector<Apple*> apples;
 	void removeInteractiveItem(int x, int y);
 public:
 	GameMap(int mapWidthElements, int mapHeightElements);

@@ -2,7 +2,7 @@
 
 DeathMapElement::DeathMapElement()
 {
-	this->msToDisappear = 5000L;
+	this->msToDisappear = 1500L;
 	this->creationTime = getCurrentTime();
 }
 

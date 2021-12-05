@@ -122,6 +122,8 @@ void GameMap::gameCycle()
 
 				Bomb* bomb = new Bomb();
 
+				bomb->setPower(player->getPower());
+
 				Direction playerDirection = player->getDirection();
 
 				if (playerDirection == Direction::RIGHT && (playerX + 1) <= mapWidthElements) {
@@ -186,7 +188,7 @@ void GameMap::gameCycle()
 			//Do testów ustawiæ power na 2
 			//Odkomentowaæ po testach
 			//int power = bo->getPower();
-			int power = 2;
+			int power = bo->getPower();
 			//Leci w prawo wybuch
 			for (int x = xBasic + 1, i = 0; i < power && x < mapWidthElements; ++x, ++i) {
 				MapElement* buff = elements[x][yBasic];
@@ -200,6 +202,7 @@ void GameMap::gameCycle()
 						apple->setY(buff->getY());
 
 						elements[x][yBasic] = apple;
+						apples.push_back(apple);
 						interactiveBlocks.remove(buff);
 						delete buff;
 					}
@@ -232,6 +235,7 @@ void GameMap::gameCycle()
 						apple->setY(buff->getY());
 
 						elements[xBasic][y] = apple;
+						apples.push_back(apple);
 						interactiveBlocks.remove(buff);
 						delete buff;
 					}
@@ -260,6 +264,7 @@ void GameMap::gameCycle()
 						apple->setY(buff->getY());
 
 						elements[x][yBasic] = apple;
+						apples.push_back(apple);
 						interactiveBlocks.remove(buff);
 
 						delete buff;
@@ -290,7 +295,7 @@ void GameMap::gameCycle()
 						apple->setX(buff->getX());
 						apple->setY(buff->getY());
 
-						interactiveBlocks.push_back(apple);
+						apples.push_back(apple);
 						interactiveBlocks.remove(buff);
 
 						elements[xBasic][y] = apple;;
@@ -316,34 +321,65 @@ void GameMap::gameCycle()
 		}
 	}
 
-	std::vector<DeathMapElement*>::iterator itd = deathMapElements.begin();
-	
-	for (itd = deathMapElements.begin(); itd != deathMapElements.end(); itd++) {
+	{
+		std::vector<DeathMapElement*>::iterator itd = deathMapElements.begin();
+		for (; itd != deathMapElements.end(); itd++) {
 
-		DeathMapElement* bo = *itd;
-		std::vector<Player*>::iterator it = players.begin();
+			DeathMapElement* bo = *itd;
+			std::vector<Player*>::iterator itp = players.begin();
 
-		for (; it != players.end(); ++it) {
-			Player* player = *it;
+			for (; itp != players.end(); ++itp) {
+				Player* player = *itp;
 
-			if (player->isIntersect(bo->getFloatRect()) && !player->isImmortal()) {
-				player->setHealth(player->getHealth() - 1);
-				player->resetImmortality();
+				if (player->isIntersect(bo->getFloatRect()) && !player->isImmortal()) {
+					player->setHealth(player->getHealth() - 1);
+					player->resetImmortality();
+				}
+
+			}
+
+
+			if (bo->isCanDisappear()) {
+
+				elements[bo->getX()][bo->getY()] = NULL;
+
+				deathMapElements.erase(itd);
+
+				delete bo;
+				break;
+			}
+		}
+	}
+
+	{
+		std::vector<Apple*>::iterator ita = apples.begin();
+
+		for (; ita != apples.end(); ++ita) {
+			Apple* apple = *ita;
+
+			std::vector<Player*>::iterator itp = players.begin();
+
+			for (; itp != players.end(); ++itp) {
+				Player* player = *itp;
+				
+				if (player->isIntersect(apple->getFloatRect())){
+					int power = player->getPower() + apple->getPower();
+
+					if (power > player->getMaxPower())
+						power = player->getMaxPower();
+
+					player->setPower(power);
+					elements[apple->getX()][apple->getY()] = NULL;
+					apples.erase(ita);
+					return;
+				}
+
 			}
 
 		}
 
-
-		if (bo->isCanDisappear()) {
-
-			elements[bo->getX()][bo->getY()] = NULL;
-
-			deathMapElements.erase(itd);
-
-			delete bo;
-			break;
-		}
 	}
+	
 
 }
 
@@ -431,26 +467,6 @@ sf::Vector2f GameMap::calculatePlayerMovement(Player* player)
 		MapElement* el = *it;
 
 		sf::FloatRect recta = el->getFloatRect();
-
-		if (player->isIntersect(recta) && std::string(typeid(*el).name()) == std::string(typeid(Apple).name()))
-		{
-			Apple* ap = (Apple*)el;
-
-			elements[el->getX()][el->getY()] = NULL;
-
-			int power = player->getPower() + ap->getPower();
-
-			if (power > player->getMaxPower())
-				power = player->getMaxPower();
-
-			player->setPower(power);
-
-			interactiveBlocks.erase(it);
-
-			delete el;
-
-			break;
-		}
 
 		if (mover.x > 0.f && !player->isCanMoveRight(recta))
 			mover.x = -0.1f;
