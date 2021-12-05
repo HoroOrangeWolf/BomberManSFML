@@ -8,7 +8,8 @@ class StaticBlock :
 public:
     virtual sf::RectangleShape& getToDraw();
     virtual bool isInteractive() override;
-    
-
+    StaticBlock();
+private:
+    sf::Texture unbreakableBlockTexture;
 };
 

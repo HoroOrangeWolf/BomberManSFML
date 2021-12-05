@@ -2,10 +2,6 @@
 
 sf::RectangleShape& StaticBlock::getToDraw()
 {
-    sf::RectangleShape &shape = MapElement::getToDraw();
-
-    shape.setFillColor(sf::Color::Green);
-
     return shape;
 }
 
@@ -14,3 +10,8 @@ bool StaticBlock::isInteractive()
     return true;
 }
 
+StaticBlock::StaticBlock()
+{
+    unbreakableBlockTexture.loadFromFile("images/unbreakable_block.png");
+    shape.setTexture(&unbreakableBlockTexture);
+}

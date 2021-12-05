@@ -9,9 +9,6 @@ protected:
 public:
     MapElement() {
         shape = sf::RectangleShape(sf::Vector2f(100.f, 100.f));
-        shape.setFillColor(sf::Color::Transparent);
-        shape.setOutlineColor(sf::Color::Red);
-        shape.setOutlineThickness(2.f);
     }
 	virtual sf::RectangleShape& getToDraw();
     virtual bool isInteractive();
