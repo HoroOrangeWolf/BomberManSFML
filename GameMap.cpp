@@ -165,7 +165,7 @@ void GameMap::gameCycle()
 
 	}
 
-	//Tu jest sprawdzanie wybuchów
+	//Tu jest sprawdzanie wybuchï¿½w
 	std::vector<Bomb*>::iterator it = bombs.begin();
 
 	for (it = bombs.begin(); it != bombs.end(); it++) {
@@ -176,6 +176,8 @@ void GameMap::gameCycle()
 			
 			DeathMapElement *center = new DeathMapElement();
 
+			center->setTexture("images/explo_mid.png");
+
 			deathMapElements.push_back(center);
 
 			center->setX(bo->getX());
@@ -185,10 +187,11 @@ void GameMap::gameCycle()
 
 			int xBasic = bo->getX();
 			int yBasic = bo->getY();
-			//Do testów ustawiæ power na 2
-			//Odkomentowaæ po testach
+			//Do testï¿½w ustawiï¿½ power na 2
+			//Odkomentowaï¿½ po testach
 			//int power = bo->getPower();
 			int power = bo->getPower();
+
 			//Leci w prawo wybuch
 			for (int x = xBasic + 1, i = 0; i < power && x < mapWidthElements; ++x, ++i) {
 				MapElement* buff = elements[x][yBasic];
@@ -209,9 +212,17 @@ void GameMap::gameCycle()
 					break;
 				}
 
-				//Ostatni element wybuchu to i == power-1 <- to najwa¿niejsze lub x == mapWidthElements - 1 tym drugim nie trzeba siê przejmowaæ
+				//Ostatni element wybuchu to i == power-1 <- to najwaï¿½niejsze lub x == mapWidthElements - 1 tym drugim nie trzeba siï¿½ przejmowaï¿½
 
 				DeathMapElement *element = new DeathMapElement();
+
+				if (i == power - 1) {
+					element->setTexture("images/explo_right_end.png");
+				}
+				else {
+					element->setTexture("images/explo_right.png");
+				}
+
 				deathMapElements.push_back(element);
 
 				element->setX(x);
@@ -220,7 +231,7 @@ void GameMap::gameCycle()
 				elements[element->getX()][element->getY()] = element;
 				
 			}
-			//Leci w dó³ wybuch
+			//Leci w dï¿½ wybuch
 			for (int y = yBasic + 1, i = 0; i < power && y < mapHeightElements; ++y, ++i) {
 
 				MapElement* buff = elements[xBasic][y];
@@ -243,6 +254,14 @@ void GameMap::gameCycle()
 				}
 
 				DeathMapElement* element = new DeathMapElement();
+
+				if (i == power - 1) {
+					element->setTexture("images/explo_down_end.png");
+				}
+				else {
+					element->setTexture("images/explo_down.png");
+				}
+
 				deathMapElements.push_back(element);
 
 				element->setX(xBasic);
@@ -274,6 +293,14 @@ void GameMap::gameCycle()
 
 
 				DeathMapElement* element = new DeathMapElement();
+
+				if (i == power - 1) {
+					element->setTexture("images/explo_left_end.png");
+				}
+				else {
+					element->setTexture("images/explo_left.png");
+				}
+
 				deathMapElements.push_back(element);
 
 				element->setX(x);
@@ -281,7 +308,7 @@ void GameMap::gameCycle()
 
 				elements[element->getX()][element->getY()] = element;
 			}
-			//Leci w góre wybuch
+			//Leci w gï¿½re wybuch
 			for (int y = yBasic - 1, i = 0; i < power && y >= 0; --y, ++i) {
 
 				MapElement* buff = elements[xBasic][y];
@@ -306,6 +333,14 @@ void GameMap::gameCycle()
 				}
 
 				DeathMapElement* element = new DeathMapElement();
+
+				if (i == power - 1) {
+					element->setTexture("images/explo_up_end.png");
+				}
+				else {
+					element->setTexture("images/explo_up.png");
+				}
+
 				deathMapElements.push_back(element);
 
 				element->setX(xBasic);

@@ -9,6 +9,7 @@ private:
     int power;
     long long msToExplode;
     long long creationTime;
+    sf::Texture texture;
 public:
     Bomb();
     Bomb(int power, long msToExplode);

@@ -5,10 +5,12 @@ class Apple :
 {
 private:
     int power = 0;
+    sf::Texture texture;
 public:
     Apple(int power) {
         this->power = power;
-        this->shape.setFillColor(sf::Color::Magenta);
+        texture.loadFromFile("images/powerup.png");
+        shape.setTexture(&texture);
     }
     void setPower(int power);
     int getPower();

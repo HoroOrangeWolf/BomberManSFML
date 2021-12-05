@@ -5,6 +5,8 @@ Bomb::Bomb()
 	this->creationTime = getCurrentTime();
 	this->power = 1;
 	this->msToExplode = 1500L;
+	texture.loadFromFile("images/bomba.png");
+	shape.setTexture(&texture);
 }
 
 Bomb::Bomb(int power, long msToExplode)
@@ -12,6 +14,8 @@ Bomb::Bomb(int power, long msToExplode)
 	this->creationTime = getCurrentTime();
 	this->power = power;
 	this->msToExplode = msToExplode;
+	texture.loadFromFile("images/bomba.png");
+	shape.setTexture(&texture);
 }
 
 
