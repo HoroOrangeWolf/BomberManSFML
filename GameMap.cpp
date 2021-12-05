@@ -317,11 +317,23 @@ void GameMap::gameCycle()
 	}
 
 	std::vector<DeathMapElement*>::iterator itd = deathMapElements.begin();
-		
 	
 	for (itd = deathMapElements.begin(); itd != deathMapElements.end(); itd++) {
 
 		DeathMapElement* bo = *itd;
+		std::vector<Player*>::iterator it = players.begin();
+
+		for (; it != players.end(); ++it) {
+			Player* player = *it;
+
+			if (player->isIntersect(bo->getFloatRect()) && !player->isImmortal()) {
+				player->setHealth(player->getHealth() - 1);
+				player->resetImmortality();
+			}
+
+		}
+
+
 		if (bo->isCanDisappear()) {
 
 			elements[bo->getX()][bo->getY()] = NULL;

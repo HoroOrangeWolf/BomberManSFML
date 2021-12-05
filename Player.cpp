@@ -120,6 +120,31 @@ void Player::setHealthBar(HealthBar healthBar)
 	this->healthBar = healthBar;
 }
 
+int Player::getHealth()
+{
+	return healthBar.getHealthPoints();
+}
+
+void Player::setHealth(int health)
+{
+	healthBar.setHealthPoints(health);
+}
+
+bool Player::isImmortal()
+{
+	return getCurrentTime() < (lastDamage + immortality);;
+}
+
+void Player::resetImmortality()
+{
+	lastDamage = getCurrentTime();
+}
+
+void Player::setImmortalityDuration(long long duration)
+{
+	immortality = duration;
+}
+
 void Player::setUp(std::pair<sf::Keyboard::Key, sf::Vector2f> cont)
 {
 	up = cont;

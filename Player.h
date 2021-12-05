@@ -20,7 +20,7 @@ private:
 	long long lastDamage = 0;
 	HealthBar healthBar;
 	//ms = 2s
-	long long imortality = 2000;
+	long long immortality = 2000L;
 	int power = 1;
 	int maxPower = 3;
 
@@ -47,6 +47,13 @@ public:
 	void setMaxPower(int maxPower);
 
 	void setHealthBar(HealthBar healthBar);
+
+	int getHealth();
+	void setHealth(int health);
+
+	bool isImmortal();
+	void resetImmortality();
+	void setImmortalityDuration(long long duration);
 
 	void setUp(std::pair < sf::Keyboard::Key, sf::Vector2f> cont);
 	void setLeft(std::pair < sf::Keyboard::Key, sf::Vector2f> cont);
