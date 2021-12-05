@@ -34,22 +34,22 @@ int main()
 
     player2.setHealthBar(health);
 
-    player1.setUp(std::pair<sf::Keyboard::Key, sf::Vector2f>(sf::Keyboard::W, sf::Vector2f(0.f, -0.1f)));
+    player1.setUp(std::pair<sf::Keyboard::Key, sf::Vector2f>(sf::Keyboard::W, sf::Vector2f(0.f, -0.3f)));
 
-    player1.setDown(std::pair<sf::Keyboard::Key, sf::Vector2f>(sf::Keyboard::S, sf::Vector2f(0.f, 0.1f)));
+    player1.setDown(std::pair<sf::Keyboard::Key, sf::Vector2f>(sf::Keyboard::S, sf::Vector2f(0.f, 0.3f)));
 
-    player1.setLeft(std::pair<sf::Keyboard::Key, sf::Vector2f>(sf::Keyboard::A, sf::Vector2f(-0.1f, 0.f)));
+    player1.setLeft(std::pair<sf::Keyboard::Key, sf::Vector2f>(sf::Keyboard::A, sf::Vector2f(-0.3f, 0.f)));
 
-    player1.setRight(std::pair<sf::Keyboard::Key, sf::Vector2f>(sf::Keyboard::D, sf::Vector2f(0.1f, 0.f)));
+    player1.setRight(std::pair<sf::Keyboard::Key, sf::Vector2f>(sf::Keyboard::D, sf::Vector2f(0.3f, 0.f)));
     player1.setPlaceBomb(sf::Keyboard::Space);
 
-    player2.setUp(std::pair<sf::Keyboard::Key, sf::Vector2f>(sf::Keyboard::Up, sf::Vector2f(0.f, -0.1f)));
+    player2.setUp(std::pair<sf::Keyboard::Key, sf::Vector2f>(sf::Keyboard::Up, sf::Vector2f(0.f, -0.3f)));
 
-    player2.setDown(std::pair<sf::Keyboard::Key, sf::Vector2f>(sf::Keyboard::Down, sf::Vector2f(0.f, 0.1f)));
+    player2.setDown(std::pair<sf::Keyboard::Key, sf::Vector2f>(sf::Keyboard::Down, sf::Vector2f(0.f, 0.3f)));
 
     player2.setLeft(std::pair<sf::Keyboard::Key, sf::Vector2f>(sf::Keyboard::Left, sf::Vector2f(-.1f, 0.f)));
 
-    player2.setRight(std::pair<sf::Keyboard::Key, sf::Vector2f>(sf::Keyboard::Right, sf::Vector2f(0.1f, 0.f)));
+    player2.setRight(std::pair<sf::Keyboard::Key, sf::Vector2f>(sf::Keyboard::Right, sf::Vector2f(0.3f, 0.f)));
 
     GameMap gameMap = GameMap::loadMapFromFile("maps/map.txt");;
     

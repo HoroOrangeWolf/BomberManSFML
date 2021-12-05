@@ -4,7 +4,7 @@ Bomb::Bomb()
 {
 	this->creationTime = getCurrentTime();
 	this->power = 1;
-	this->msToExplode = 5000L;
+	this->msToExplode = 1500L;
 }
 
 Bomb::Bomb(int power, long msToExplode)

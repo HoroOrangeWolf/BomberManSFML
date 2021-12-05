@@ -125,18 +125,34 @@ void GameMap::gameCycle()
 				Direction playerDirection = player->getDirection();
 
 				if (playerDirection == Direction::RIGHT && (playerX + 1) <= mapWidthElements) {
+					
+					if (getElement(playerX + 1, playerY) != NULL)
+						continue;
+
 					bomb->setX(playerX + 1);
 					bomb->setY(playerY);
 				}
 				else if (playerDirection == Direction::LEFT && (playerX - 1) >= 0) {
+
+					if (getElement(playerX - 1, playerY) != NULL)
+						continue;
+
 					bomb->setX(playerX - 1);
 					bomb->setY(playerY);
 				}
 				else if (playerDirection == Direction::TOP && (playerY - 1) >= 0) {
+
+					if (getElement(playerX, playerY - 1) != NULL)
+						continue;
+
 					bomb->setX(playerX);
 					bomb->setY(playerY - 1);
 				}
 				else if (playerDirection == Direction::DOWN && (playerY + 1) <= mapHeightElements) {
+
+					if (getElement(playerX, playerY + 1) != NULL)
+						continue;
+
 					bomb->setX(playerX);
 					bomb->setY(playerY + 1);
 				}
