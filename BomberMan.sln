@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31729.503
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BomberMan", "BomberMan.vcxproj", "{C93927F4-1213-4EC3-96F4-53CBCC5290AB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C93927F4-1213-4EC3-96F4-53CBCC5290AB}.Debug|x64.ActiveCfg = Debug|x64
+		{C93927F4-1213-4EC3-96F4-53CBCC5290AB}.Debug|x64.Build.0 = Debug|x64
+		{C93927F4-1213-4EC3-96F4-53CBCC5290AB}.Debug|x86.ActiveCfg = Debug|Win32
+		{C93927F4-1213-4EC3-96F4-53CBCC5290AB}.Debug|x86.Build.0 = Debug|Win32
+		{C93927F4-1213-4EC3-96F4-53CBCC5290AB}.Release|x64.ActiveCfg = Release|x64
+		{C93927F4-1213-4EC3-96F4-53CBCC5290AB}.Release|x64.Build.0 = Release|x64
+		{C93927F4-1213-4EC3-96F4-53CBCC5290AB}.Release|x86.ActiveCfg = Release|Win32
+		{C93927F4-1213-4EC3-96F4-53CBCC5290AB}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1EBE7FBC-2050-42B5-83C5-1484D5F229B3}
+	EndGlobalSection
+EndGlobal
