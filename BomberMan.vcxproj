@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -145,11 +145,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AnimatedObject.cpp" />
     <ClCompile Include="Apple.cpp" />
+    <ClCompile Include="BitmapHandler.cpp" />
+    <ClCompile Include="BitmapObject.cpp" />
     <ClCompile Include="Bomb.cpp" />
     <ClCompile Include="BomberMan.cpp" />
     <ClCompile Include="Chest.cpp" />
     <ClCompile Include="DeathMapElement.cpp" />
+    <ClCompile Include="EndGameScreen.cpp" />
     <ClCompile Include="GameEngine.cpp" />
     <ClCompile Include="GameMap.cpp" />
     <ClCompile Include="GameMenu.cpp" />
@@ -160,11 +164,15 @@
     <ClCompile Include="StaticBlock.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AnimatedObject.h" />
     <ClInclude Include="Apple.h" />
+    <ClInclude Include="BitmapHandler.h" />
+    <ClInclude Include="BitmapObject.h" />
     <ClInclude Include="Bomb.h" />
     <ClInclude Include="Chest.h" />
     <ClInclude Include="DeathMapElement.h" />
     <ClInclude Include="Direction.h" />
+    <ClInclude Include="EndGameScreen.h" />
     <ClInclude Include="GameEngine.h" />
     <ClInclude Include="GameMap.h" />
     <ClInclude Include="GameMenu.h" />

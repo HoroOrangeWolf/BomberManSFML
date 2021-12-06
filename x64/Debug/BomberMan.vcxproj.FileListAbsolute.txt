@@ -1,1 +1,2 @@
 D:\Studia\Visual Studio Repos\BomberManSFML\x64\Debug\BomberMan.exe
+C:\Users\wojci\Documents\GitHub\BomberManSFML\x64\Debug\BomberMan.exe

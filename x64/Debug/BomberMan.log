@@ -1,2 +1,66 @@
-﻿  GameEngine.cpp
-  BomberMan.vcxproj -> D:\Studia\Visual Studio Repos\BomberManSFML\x64\Debug\BomberMan.exe
+﻿  BomberMan.cpp
+  EndGameScreen.cpp
+  GameEngine.cpp
+  GameMap.cpp
+C:\Users\wojci\Documents\GitHub\BomberManSFML\GameMap.cpp(64,82): warning C4244: "argument": konwersja z "double" do "T", możliwa utrata danych
+          with
+          [
+              T=float
+          ]
+C:\Users\wojci\Documents\GitHub\BomberManSFML\GameMap.cpp(77,82): warning C4244: "argument": konwersja z "double" do "T", możliwa utrata danych
+          with
+          [
+              T=float
+          ]
+C:\Users\wojci\Documents\GitHub\BomberManSFML\GameMap.cpp(93,63): warning C4244: "argument": konwersja z "double" do "T", możliwa utrata danych
+          with
+          [
+              T=float
+          ]
+C:\Users\wojci\Documents\GitHub\BomberManSFML\GameMap.cpp(110,63): warning C4244: "argument": konwersja z "double" do "T", możliwa utrata danych
+          with
+          [
+              T=float
+          ]
+C:\Users\wojci\Documents\GitHub\BomberManSFML\GameMap.cpp(120,17): warning C4244: "inicjowanie": konwersja z "double" do "int", możliwa utrata danych
+C:\Users\wojci\Documents\GitHub\BomberManSFML\GameMap.cpp(121,17): warning C4244: "inicjowanie": konwersja z "double" do "int", możliwa utrata danych
+C:\Users\wojci\Documents\GitHub\BomberManSFML\GameMap.cpp(487,51): warning C4244: "argument": konwersja z "double" do "T", możliwa utrata danych
+          with
+          [
+              T=float
+          ]
+C:\Users\wojci\Documents\GitHub\BomberManSFML\GameMap.cpp(487,31): warning C4244: "argument": konwersja z "double" do "T", możliwa utrata danych
+          with
+          [
+              T=float
+          ]
+C:\Users\wojci\Documents\GitHub\BomberManSFML\GameMap.cpp(488,76): warning C4244: "argument": konwersja z "double" do "T", możliwa utrata danych
+          with
+          [
+              T=float
+          ]
+C:\Users\wojci\Documents\GitHub\BomberManSFML\GameMap.cpp(488,53): warning C4244: "argument": konwersja z "double" do "T", możliwa utrata danych
+          with
+          [
+              T=float
+          ]
+  GameMenu.cpp
+  Player.cpp
+C:\Users\wojci\Documents\GitHub\BomberManSFML\Player.cpp(34,42): warning C4244: "argument": konwersja z "double" do "T", możliwa utrata danych
+          with
+          [
+              T=float
+          ]
+C:\Users\wojci\Documents\GitHub\BomberManSFML\Player.cpp(34,35): warning C4244: "argument": konwersja z "double" do "T", możliwa utrata danych
+          with
+          [
+              T=float
+          ]
+C:\Users\wojci\Documents\GitHub\BomberManSFML\Player.cpp(40,27): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
+C:\Users\wojci\Documents\GitHub\BomberManSFML\Player.cpp(42,48): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
+C:\Users\wojci\Documents\GitHub\BomberManSFML\Player.cpp(42,35): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
+C:\Users\wojci\Documents\GitHub\BomberManSFML\Player.cpp(44,53): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
+C:\Users\wojci\Documents\GitHub\BomberManSFML\Player.cpp(44,27): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
+C:\Users\wojci\Documents\GitHub\BomberManSFML\Player.cpp(46,34): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
+  Generowanie kodu...
+  BomberMan.vcxproj -> C:\Users\wojci\Documents\GitHub\BomberManSFML\x64\Debug\BomberMan.exe

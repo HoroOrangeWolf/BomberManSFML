@@ -77,6 +77,73 @@ auto Player::getCurrentTime()
 	return std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
 }
 
+void Player::animate()
+{
+	countFPS++;
+
+	if (isStop)
+		return;
+
+	if (countFPS >= intervalFPS) {
+		imgIndex++;
+		countFPS = 0;
+	}
+
+	switch (direction)
+	{
+	case Direction::DOWN:
+	{
+		if (imgIndex >= (framesFront.size() - 1))
+			imgIndex = 0;
+
+		currentTexture = sf::Texture();
+
+		currentTexture.loadFromImage(framesFront[imgIndex]);
+
+		currentSprite = sf::Sprite(currentTexture);
+	}
+	break;
+	case Direction::TOP:
+	{
+		if (imgIndex >= (framesBack.size() - 1))
+			imgIndex = 0;
+
+		currentTexture = sf::Texture();
+
+		currentTexture.loadFromImage(framesBack[imgIndex]);
+
+		currentSprite = sf::Sprite(currentTexture);
+	}
+	break;
+	case Direction::LEFT:
+	{
+		if (imgIndex >= (framesLeft.size() - 1))
+			imgIndex = 0;
+
+		currentTexture = sf::Texture();
+
+		currentTexture.loadFromImage(framesLeft[imgIndex]);
+
+		currentSprite = sf::Sprite(currentTexture);
+	}
+	break;
+	case Direction::RIGHT:
+	{
+		if (imgIndex >= (framesRight.size() - 1))
+			imgIndex = 0;
+
+		currentTexture = sf::Texture();
+
+		currentTexture.loadFromImage(framesRight[imgIndex]);
+
+		currentSprite = sf::Sprite(currentTexture);
+	}
+	break;
+	default:
+		break;
+	}
+}
+
 
 sf::Vector2f Player::getCalculateMove()
 {

@@ -4,8 +4,12 @@
 #include <chrono>
 #include "HealthBar.h"
 #include "Direction.h"
+#include "BitmapObject.h"
+#include "AnimatedObject.h"
 
 class Player
+	:public BitmapObject,
+	public AnimatedObject
 {
 private: 
 	sf::RectangleShape playerModel;
@@ -74,6 +78,8 @@ public:
 	bool isCanPlaceBomb();
 
 	auto getCurrentTime();
+
+	void animate() override;
 
 };
 
