@@ -1,20 +1,22 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-
-enum class Button {EXIT_BUTTON, PLAY_BUTTON};
+#include <chrono>
+#include <iostream>
+#include "MenuStates.h"
+#include "Button.h"
+#include "GameEngine.h"
+#include "LevelMenu.h"
 
 class GameMenu
 {
-private:
+protected:
 	sf::RenderWindow* window;
 	sf::RectangleShape background;
-	sf::RectangleShape playButton;
-	sf::RectangleShape exitButton;
 	sf::Texture texture;
-	bool isMouseIn(sf::RectangleShape& shape);
+	bool isMouseIn(Button& shape);
 	auto getCurrentTime();
 public:
 	GameMenu(sf::RenderWindow *window);
-	Button run();
+	virtual MenuStates run();
 };
 

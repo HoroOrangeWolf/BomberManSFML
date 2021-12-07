@@ -114,8 +114,6 @@ void GameMap::gameCycle()
 			player->moveBy(nextMove);
 
 			if (player->isCanPlaceBomb()) {
-	
-	
 
 				sf::Vector2f position = player->getPosition();
 
@@ -160,6 +158,8 @@ void GameMap::gameCycle()
 					bomb->setX(playerX);
 					bomb->setY(playerY + 1);
 				}
+
+				SoundModule::SoundModule::play(SoundModule::SOUNDS::PLACE_BOMB);
 
 				addBomb(bomb);
 			}
@@ -400,6 +400,9 @@ void GameMap::gameCycle()
 				Player* player = *itp;
 				
 				if (player->isIntersect(apple->getFloatRect())){
+
+					SoundModule::SoundModule::play(SoundModule::SOUNDS::COLLECT_BONUS);
+
 					int power = player->getPower() + apple->getPower();
 
 					if (power > player->getMaxPower())

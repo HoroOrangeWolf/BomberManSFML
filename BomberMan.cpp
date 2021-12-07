@@ -15,12 +15,12 @@ int main()
     GameMenu menu(engine.getWindow());
 
     
-    Button bt = menu.run();
+    MenuStates bt = menu.run();
 
-    if (bt == Button::PLAY_BUTTON)
+    if (bt == MenuStates::PLAY)
         std::cout << "PLayButton\n";
 
-    if (bt == Button::EXIT_BUTTON)
+    if (bt == MenuStates::EXIT)
         std::cout << "ExitButton\n";
 
 
@@ -93,6 +93,7 @@ int main()
     GameMap gameMap = GameMap::loadMapFromFile("maps/map.txt");;
     
     engine.setGameMap(gameMap);
+
     engine.addPlayer(player1);
     engine.addPlayer(player2);
 

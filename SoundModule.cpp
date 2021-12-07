@@ -37,17 +37,26 @@ void SoundModule::SoundModule::loadSounds()
 		std::cout << "Can't load ExplosionSound" << std::endl;
 
 	explosion = sf::Sound(explosionBuff);
+
+	splat_buff = sf::SoundBuffer();
+
+	if (!splat_buff.loadFromFile("sounds/splat.wav"))
+		std::cout << "Can't load splat sound" << std::endl;
+	
+	splat = sf::Sound(splat_buff);
 }
 
 sf::Sound SoundModule::SoundModule::explosion = sf::Sound();
 sf::Sound SoundModule::SoundModule::death = sf::Sound();
 sf::Sound SoundModule::SoundModule::collect_bonus = sf::Sound();
 sf::Sound SoundModule::SoundModule::click = sf::Sound();
+sf::Sound SoundModule::SoundModule::splat = sf::Sound();
 
 sf::SoundBuffer SoundModule::SoundModule::clickBuff = sf::SoundBuffer();
 sf::SoundBuffer SoundModule::SoundModule::explosionBuff = sf::SoundBuffer();
 sf::SoundBuffer SoundModule::SoundModule::deathBuff = sf::SoundBuffer();
 sf::SoundBuffer SoundModule::SoundModule::collect_bonusBuff = sf::SoundBuffer();
+sf::SoundBuffer SoundModule::SoundModule::splat_buff = sf::SoundBuffer();
 
 void SoundModule::SoundModule::play(SOUNDS sound)
 {
@@ -63,6 +72,9 @@ void SoundModule::SoundModule::play(SOUNDS sound)
 		break;
 	case SOUNDS::CLICK:
 		click.play();
+		break;
+	case SOUNDS::PLACE_BOMB:
+		splat.play();
 		break;
 	default:
 		break;
