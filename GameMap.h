@@ -11,6 +11,7 @@
 #include "DeathMapElement.h"
 #include "Apple.h"
 #include "Chest.h"
+#include "SoundModule.h"
 
 class GameMap
 {

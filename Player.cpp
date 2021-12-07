@@ -1,4 +1,5 @@
 #include "Player.h"
+#include <iostream>
 
 Player::Player()
 {
@@ -7,7 +8,7 @@ Player::Player()
 
 	playerModel.setPosition(sf::Vector2f(100.f, 100.f));
 
-	this->playerModel.setFillColor(sf::Color::Blue);
+	//this->playerModel.setFillColor(sf::Color::Blue);
 
 	sf::CircleShape shape(2.f);
 
@@ -54,6 +55,15 @@ void Player::drawPlayer(double width, double height, sf::RenderWindow* window)
 
 void Player::moveBy(sf::Vector2f position)
 {
+	//std::cout << position.x << ' ' << position.y << '\n';
+
+	if (position.x == 0.f && position.y == 0.f)
+		isStop = true;
+	else
+		isStop = false;
+
+
+
 	playerModel.move(position);
 }
 
@@ -99,8 +109,7 @@ void Player::animate()
 		currentTexture = sf::Texture();
 
 		currentTexture.loadFromImage(framesFront[imgIndex]);
-
-		currentSprite = sf::Sprite(currentTexture);
+		playerModel.setTexture(&currentTexture);
 	}
 	break;
 	case Direction::TOP:
@@ -111,8 +120,7 @@ void Player::animate()
 		currentTexture = sf::Texture();
 
 		currentTexture.loadFromImage(framesBack[imgIndex]);
-
-		currentSprite = sf::Sprite(currentTexture);
+		playerModel.setTexture(&currentTexture);
 	}
 	break;
 	case Direction::LEFT:
@@ -123,8 +131,7 @@ void Player::animate()
 		currentTexture = sf::Texture();
 
 		currentTexture.loadFromImage(framesLeft[imgIndex]);
-
-		currentSprite = sf::Sprite(currentTexture);
+		playerModel.setTexture(&currentTexture);
 	}
 	break;
 	case Direction::RIGHT:
@@ -135,8 +142,7 @@ void Player::animate()
 		currentTexture = sf::Texture();
 
 		currentTexture.loadFromImage(framesRight[imgIndex]);
-
-		currentSprite = sf::Sprite(currentTexture);
+		playerModel.setTexture(&currentTexture);
 	}
 	break;
 	default:
@@ -147,17 +153,22 @@ void Player::animate()
 
 sf::Vector2f Player::getCalculateMove()
 {
-	if (sf::Keyboard::isKeyPressed(up.first))
+	if (sf::Keyboard::isKeyPressed(up.first)) {
 		return up.second;
+	}
 
-	if (sf::Keyboard::isKeyPressed(down.first))
+	if (sf::Keyboard::isKeyPressed(down.first)) {
 		return down.second;
+	}
 
-	if (sf::Keyboard::isKeyPressed(left.first))
+	if (sf::Keyboard::isKeyPressed(left.first)) {
 		return left.second;
+	}
 
-	if (sf::Keyboard::isKeyPressed(right.first))
+	if (sf::Keyboard::isKeyPressed(right.first)) {
 		return right.second;
+	}
+
 
 	return sf::Vector2f(0.f, 0.f);
 }

@@ -115,6 +115,8 @@ void GameMap::gameCycle()
 
 			if (player->isCanPlaceBomb()) {
 	
+	
+
 				sf::Vector2f position = player->getPosition();
 
 				int playerX = std::round(position.x / (mapWidthElements * singleElementHeight) * mapWidthElements);
@@ -173,6 +175,7 @@ void GameMap::gameCycle()
 		Bomb* bo = *it;
 		if (bo->isReadyToExplode()) {
 
+			SoundModule::SoundModule::play(SoundModule::SOUNDS::EXPLOSION);
 			
 			DeathMapElement *center = new DeathMapElement();
 

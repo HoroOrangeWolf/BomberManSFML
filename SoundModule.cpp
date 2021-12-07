@@ -28,16 +28,26 @@ void SoundModule::SoundModule::loadSounds()
 	if (!deathBuff.loadFromFile("sounds/DeathSound.wav"))
 		std::cout << "Can't load DeathSound" << std::endl;
 
-	death = sf::Sound(clickBuff);
+	death = sf::Sound(deathBuff);
 
 
 	explosionBuff = sf::SoundBuffer();
 
-	if (!deathBuff.loadFromFile("sounds/ExplosionSound.wav"))
+	if (!explosionBuff.loadFromFile("sounds/ExplosionSound.wav"))
 		std::cout << "Can't load ExplosionSound" << std::endl;
 
-	explosion = sf::Sound(clickBuff);
+	explosion = sf::Sound(explosionBuff);
 }
+
+sf::Sound SoundModule::SoundModule::explosion = sf::Sound();
+sf::Sound SoundModule::SoundModule::death = sf::Sound();
+sf::Sound SoundModule::SoundModule::collect_bonus = sf::Sound();
+sf::Sound SoundModule::SoundModule::click = sf::Sound();
+
+sf::SoundBuffer SoundModule::SoundModule::clickBuff = sf::SoundBuffer();
+sf::SoundBuffer SoundModule::SoundModule::explosionBuff = sf::SoundBuffer();
+sf::SoundBuffer SoundModule::SoundModule::deathBuff = sf::SoundBuffer();
+sf::SoundBuffer SoundModule::SoundModule::collect_bonusBuff = sf::SoundBuffer();
 
 void SoundModule::SoundModule::play(SOUNDS sound)
 {

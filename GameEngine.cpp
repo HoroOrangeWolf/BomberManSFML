@@ -3,6 +3,7 @@
 #include "Bomb.h"
 #include <iostream>
 #include "HealthBar.h"
+#include "EndGameScreen.h"
 
 GameEngine::GameEngine(std::string title, int width, int height)
 {
@@ -46,7 +47,7 @@ void GameEngine::run()
 
     for (int i = 0; i < playerList.size(); ++i)
         map->addPlayer(*playerList[i]);
-  
+
     while (window->isOpen())
     {
         sf::Event event;
@@ -58,10 +59,13 @@ void GameEngine::run()
           
         }
 
+
         auto currentFrame = getCurrentTime();
 
         if ((currentFrame - lastFrame) < fpsInterval)
             continue;
+
+        lastFrame = getCurrentTime();
 
         map->gameCycle();
 
@@ -70,8 +74,10 @@ void GameEngine::run()
         window->draw(shape);
         map->drawMap(window);
 
-        for(int i = 0; i < playerList.size(); ++i)
+        for (int i = 0; i < playerList.size(); ++i) {
+            playerList[i]->animate();
             playerList[i]->drawPlayer(map->getSingleElementWidth(), map->getSingleElementHeight(), window);
+        }
 
         window->display();
     }

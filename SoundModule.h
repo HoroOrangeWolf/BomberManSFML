@@ -9,12 +9,12 @@ namespace SoundModule {
 	class SoundModule
 	{
 	private:
-		sf::Sound explosion, death, collect_bonus, click;
-		sf::SoundBuffer clickBuff, explosionBuff, deathBuff, collect_bonusBuff;
+		static sf::Sound explosion, death, collect_bonus, click;
+		static sf::SoundBuffer clickBuff, explosionBuff, deathBuff, collect_bonusBuff;
 	public:
 
-		void loadSounds();
-		void play(SOUNDS sound);
+		void static loadSounds();
+		void static play(SOUNDS sound);
 
 	};
 
