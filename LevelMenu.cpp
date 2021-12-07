@@ -1,8 +1,29 @@
 #include "LevelMenu.h"
 
+bool LevelMenu::isMouseIn(Button& shape)
+{
+    sf::Vector2i mousePosition = sf::Mouse::getPosition(*window);
+
+    sf::Vector2f position = shape.getPosition(), size = shape.getSize();
+
+
+    return (mousePosition.x >= position.x && mousePosition.y >= position.y && mousePosition.x <= (position.x + size.x) && mousePosition.y <= (position.y + size.y));
+}
+
+auto LevelMenu::getCurrentTime()
+{
+    return std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
+}
+
+LevelMenu::LevelMenu(sf::RenderWindow* window)
+{
+    this->window = window;
+}
+
 MenuStates LevelMenu::run()
 {
     auto lastFrame = getCurrentTime();
+    auto creationTime = getCurrentTime() + 1000L;
     int fpsInterval = 1000 / 60;
 
     background.setPosition(0, 0);
@@ -16,16 +37,16 @@ MenuStates LevelMenu::run()
     this->background.setTexture(&this->texture);
 
     Button level1(sf::Vector2f(200.f, 50.f), "Level 1");
-    level1.setPosition(sf::Vector2f(250.f, 200.f));
+    level1.setPosition(sf::Vector2f(250.f, 100.f));
 
     Button level2(sf::Vector2f(200.f, 50.f), "Level 2");
-    level2.setPosition(sf::Vector2f(250.f, 300.f));
+    level2.setPosition(sf::Vector2f(250.f, 200.f));
 
-    Button level3(sf::Vector2f(200.f, 50.f), "Level 2");
-    level3.setPosition(sf::Vector2f(250.f, 400.f));
+    Button level3(sf::Vector2f(200.f, 50.f), "Level 3");
+    level3.setPosition(sf::Vector2f(250.f, 300.f));
 
-    Button back(sf::Vector2f(200.f, 50.f), "Level 2");
-    back.setPosition(sf::Vector2f(250.f, 500.f));
+    Button back(sf::Vector2f(200.f, 50.f), "Back");
+    back.setPosition(sf::Vector2f(250.f, 400.f));
 
     while (window->isOpen())
     {
@@ -37,7 +58,7 @@ MenuStates LevelMenu::run()
                 window->close();
         }
 
-        if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)) {
+        if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) && (getCurrentTime() > creationTime)) {
             if (isMouseIn(level1))
                 return MenuStates::LEVEL1;
             else if (isMouseIn(level2))

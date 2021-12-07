@@ -14,16 +14,7 @@ int main()
     HealthBar::loadHealthTextureFromFile("images/heart.png");
     GameMenu menu(engine.getWindow());
 
-    
-    MenuStates bt = menu.run();
-
-    if (bt == MenuStates::PLAY)
-        std::cout << "PLayButton\n";
-
-    if (bt == MenuStates::EXIT)
-        std::cout << "ExitButton\n";
-
-
+    //Config
     SoundModule::SoundModule::loadSounds();
 
     Player player1, player2;
@@ -92,13 +83,44 @@ int main()
 
     GameMap gameMap = GameMap::loadMapFromFile("maps/map.txt");;
     
-    engine.setGameMap(gameMap);
+    MenuStates state = MenuStates::LEVEL1;
 
-    engine.addPlayer(player1);
-    engine.addPlayer(player2);
+    while (state != MenuStates::EXIT) {
+        MenuStates bt = menu.run();
+
+        GameMap gameMap = GameMap::loadMapFromFile("maps/map.txt");;
+
+       
+
+        switch (state)
+        {
+        case MenuStates::LEVEL1:
+            gameMap = GameMap::loadMapFromFile("maps/map1.txt");
+            std::cout << "LEVEL1" << '\n';
+            break;
+        case MenuStates::LEVEL2:
+            gameMap = GameMap::loadMapFromFile("maps/map2.txt");
+            std::cout << "LEVEL2" << '\n';
+            break;
+        case MenuStates::LEVEL3:
+            gameMap = GameMap::loadMapFromFile("maps/map3.txt");
+            std::cout << "LEVEL3" << '\n';
+            break;
+        default:
+            return 0;
+        }
 
 
-    engine.run();
+        engine.setGameMap(gameMap);
+
+        engine.addPlayer(player1);
+        engine.addPlayer(player2);
+
+
+        engine.run();
+    }
+
+    
     
 
     return 0;

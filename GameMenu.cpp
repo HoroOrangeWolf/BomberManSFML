@@ -42,6 +42,7 @@ MenuStates GameMenu::run()
     Button button2(sf::Vector2f(200.f, 50.f), "Quit");
     button2.setPosition(sf::Vector2f(250.f, 300.f));
 
+    LevelMenu menu(window);
 
     while (window->isOpen())
     {
@@ -54,8 +55,11 @@ MenuStates GameMenu::run()
         }
 
         if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)) {
-            if (isMouseIn(button1))
-                return MenuStates::PLAY;
+            if (isMouseIn(button1)) {
+                MenuStates state = menu.run();
+                if (state != MenuStates::BACK)
+                    return state;
+            }
             else if (isMouseIn(button2))
                 return MenuStates::EXIT;
                 
