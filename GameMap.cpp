@@ -36,8 +36,11 @@ void GameMap::clearPlayers()
 	players.clear();
 }
 
-void GameMap::gameCycle()
+bool GameMap::gameCycle(sf::RenderWindow *window)
 {
+	int chance = 20;
+	int random = std::rand()%101;
+
 
 	{
 		std::vector<Player*>::iterator it = players.begin();
@@ -173,13 +176,20 @@ void GameMap::gameCycle()
 				{
 					if (std::string(typeid(*buff).name()) == std::string(typeid(Chest).name()))
 					{
-						Apple* apple = new Apple(((Chest*)buff)->getPower());
+						if (random <= chance) {
+							Apple* apple = new Apple(((Chest*)buff)->getPower());
 
-						apple->setX(buff->getX());
-						apple->setY(buff->getY());
+							apple->setX(buff->getX());
+							apple->setY(buff->getY());
 
-						elements[x][yBasic] = apple;
-						apples.push_back(apple);
+							elements[buff->getX()][buff->getY()] = apple;
+							apples.push_back(apple);
+							random = chance + 1;
+						}
+						else {
+							elements[buff->getX()][buff->getY()] = NULL;
+						}
+
 						interactiveBlocks.remove(buff);
 						delete buff;
 					}
@@ -214,13 +224,21 @@ void GameMap::gameCycle()
 					if (std::string(typeid(*buff).name()) == std::string(typeid(Chest).name()))
 					{
 
-						Apple* apple = new Apple(((Chest*)buff)->getPower());
+						if (random <= chance) {
+							Apple* apple = new Apple(((Chest*)buff)->getPower());
 
-						apple->setX(buff->getX());
-						apple->setY(buff->getY());
+							apple->setX(buff->getX());
+							apple->setY(buff->getY());
 
-						elements[xBasic][y] = apple;
-						apples.push_back(apple);
+							elements[buff->getX()][buff->getY()] = apple;
+							apples.push_back(apple);
+							random = chance + 1;
+						}
+						else {
+							elements[buff->getX()][buff->getY()] = NULL;
+						}
+
+
 						interactiveBlocks.remove(buff);
 						delete buff;
 					}
@@ -251,13 +269,23 @@ void GameMap::gameCycle()
 				{
 					if (std::string(typeid(*buff).name()) == std::string(typeid(Chest).name()))
 					{
-						Apple* apple = new Apple(((Chest*)buff)->getPower());
 
-						apple->setX(buff->getX());
-						apple->setY(buff->getY());
+						if (random <= chance) {
+							Apple* apple = new Apple(((Chest*)buff)->getPower());
 
-						elements[x][yBasic] = apple;
-						apples.push_back(apple);
+							apple->setX(buff->getX());
+							apple->setY(buff->getY());
+
+							elements[buff->getX()][buff->getY()] = apple;
+							apples.push_back(apple);
+							random = chance + 1;
+						}
+						else {
+							elements[buff->getX()][buff->getY()] = NULL;
+						}
+						
+
+
 						interactiveBlocks.remove(buff);
 
 						delete buff;
@@ -291,15 +319,22 @@ void GameMap::gameCycle()
 				{
 					if (std::string(typeid(*buff).name()) == std::string(typeid(Chest).name()))
 					{
-						Apple* apple = new Apple(((Chest*)buff)->getPower());
+						if (random <= chance) {
+							Apple* apple = new Apple(((Chest*)buff)->getPower());
 
-						apple->setX(buff->getX());
-						apple->setY(buff->getY());
+							apple->setX(buff->getX());
+							apple->setY(buff->getY());
 
-						apples.push_back(apple);
+							elements[buff->getX()][buff->getY()] = apple;
+							apples.push_back(apple);
+							random = chance + 1;
+						}
+						else {
+							elements[buff->getX()][buff->getY()] = NULL;
+						}
+
 						interactiveBlocks.remove(buff);
 
-						elements[xBasic][y] = apple;;
 
 						delete buff;
 					}
@@ -342,6 +377,18 @@ void GameMap::gameCycle()
 
 				if (player->isIntersect(bo->getFloatRect()) && !player->isImmortal()) {
 					player->setHealth(player->getHealth() - 1);
+
+					if (player->getHealth() <= 0)
+					{
+						SoundModule::SoundModule::play(SoundModule::SOUNDS::DEATH);
+
+						EndGameScreen screen;
+
+						screen.run(window, player ->getPlayerName() + " Lost!");
+
+						return false;
+					}
+
 					player->resetImmortality();
 				}
 
@@ -383,7 +430,7 @@ void GameMap::gameCycle()
 					player->setPower(power);
 					elements[apple->getX()][apple->getY()] = NULL;
 					apples.erase(ita);
-					return;
+					return true;
 				}
 
 			}
@@ -391,7 +438,31 @@ void GameMap::gameCycle()
 		}
 
 	}
+
+	return true;
 	
+
+}
+
+void GameMap::setUpPlayers(sf::RenderWindow *window)
+{
+	singleElementWidth = (double)window->getSize().x / mapWidthElements,
+	singleElementHeight = (double)window->getSize().y / mapHeightElements;
+	float x1 = singleElementWidth, y1 = singleElementHeight;
+
+
+
+	if (players.size() == 2)
+	{
+		players[0]->setPosition(sf::Vector2f(x1, y1));
+		x1 = mapWidthElements - 2;
+		x1 *= singleElementWidth;
+
+		y1 = mapHeightElements - 2;
+		y1 *= singleElementHeight;
+
+		players[1]->setPosition(sf::Vector2f(x1, y1));
+	}
 
 }
 
@@ -406,6 +477,11 @@ GameMap::GameMap(int mapWidthElements, int mapHeightElements)
 		elements[i] = new MapElement * [mapHeightElements];
 		std::memset(elements[i], NULL, sizeof(MapElement*)*mapHeightElements);
 	}
+}
+
+GameMap::~GameMap()
+{
+
 }
 
 void GameMap::setElement(int x, int y, MapElement *element)

@@ -1,8 +1,10 @@
 #include "Player.h"
 #include <iostream>
 
-Player::Player()
+
+Player::Player(std::string playerName)
 {
+	this->playerName = playerName;
 	this->msDelayToPlaceBomb = 500;
 	this->playerModel = sf::RectangleShape(sf::Vector2f(5.f, 5.f));
 
@@ -12,7 +14,7 @@ Player::Player()
 
 	sf::CircleShape shape(2.f);
 
-	shape.setFillColor(sf::Color::Red);
+	shape.setFillColor(sf::Color::Transparent);
 
 	this->point1 = shape;
 	this->point2 = shape;
@@ -25,6 +27,11 @@ Player::Player()
 	right = std::pair<sf::Keyboard::Key, sf::Vector2f>(sf::Keyboard::W, sf::Vector2f(0.f, 0.f));
 
 	this->healthBar = HealthBar(sf::Vector2f(0.f, 0.f), 3);
+}
+
+std::string Player::getPlayerName()
+{
+	return playerName;
 }
 
 void Player::drawPlayer(double width, double height, sf::RenderWindow* window)
@@ -145,6 +152,31 @@ void Player::animate()
 		playerModel.setTexture(&currentTexture);
 	}
 	break;
+	default:
+		break;
+	}
+}
+
+void Player::initAnimation()
+{
+	switch (direction)
+	{
+	case Direction::DOWN:
+		currentTexture.loadFromImage(framesFront[0]);
+		playerModel.setTexture(&currentTexture);
+		break;
+	case Direction::TOP:
+		currentTexture.loadFromImage(framesBack[0]);
+		playerModel.setTexture(&currentTexture);
+		break;
+	case Direction::RIGHT:
+		currentTexture.loadFromImage(framesRight[0]);
+		playerModel.setTexture(&currentTexture);
+		break;
+	case Direction::LEFT:
+		currentTexture.loadFromImage(framesLeft[0]);
+		playerModel.setTexture(&currentTexture);
+		break;
 	default:
 		break;
 	}

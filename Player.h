@@ -26,7 +26,7 @@ private:
 	//ms = 2s
 	long long immortality = 2000L;
 	int power = 1;
-	int maxPower = 3;
+	int maxPower = 7;
 
 	
 	sf::CircleShape point1,
@@ -34,9 +34,11 @@ private:
 		point3,
 		point4;
 
-public:
-	Player();
+	std::string playerName;
 
+public:
+	Player(std::string playerName);
+	std::string getPlayerName();
 	void drawPlayer(double width, double height, sf::RenderWindow* window);
 	void moveBy(sf::Vector2f position);
 	sf::Vector2f getPosition();
@@ -80,6 +82,8 @@ public:
 	auto getCurrentTime();
 
 	void animate() override;
+
+	void initAnimation();
 
 };
 

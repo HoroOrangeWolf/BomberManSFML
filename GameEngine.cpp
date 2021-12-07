@@ -45,8 +45,12 @@ void GameEngine::run()
     shape.setTexture(&texture);
     shape.setPosition(0, 0);
 
-    for (int i = 0; i < playerList.size(); ++i)
+    for (int i = 0; i < playerList.size(); ++i) {
+        playerList[i]->initAnimation();
         map->addPlayer(*playerList[i]);
+    }
+
+    map->setUpPlayers(window);
 
     while (window->isOpen())
     {
@@ -56,7 +60,7 @@ void GameEngine::run()
         {
             if (event.type == sf::Event::Closed)
                 window->close();
-          
+            
         }
 
 
@@ -67,7 +71,8 @@ void GameEngine::run()
 
         lastFrame = getCurrentTime();
 
-        map->gameCycle();
+        if (!map->gameCycle(window))
+            return;
 
         window->clear();
         shape.setSize(sf::Vector2f(window->getSize()));

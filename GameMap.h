@@ -12,6 +12,7 @@
 #include "Apple.h"
 #include "Chest.h"
 #include "SoundModule.h"
+#include "EndGameScreen.h"
 
 class GameMap
 {
@@ -27,12 +28,16 @@ private:
 	void removeInteractiveItem(int x, int y);
 public:
 	GameMap(int mapWidthElements, int mapHeightElements);
+	~GameMap();
 
 	void addBomb(Bomb* bomb);
 	void addPlayer(Player& player);
 	void clearPlayers();
 
-	void gameCycle();
+	bool gameCycle(sf::RenderWindow *window);
+
+	void setUpPlayers(sf::RenderWindow* window);
+
 	void setElement(int x, int y, MapElement *element);
 	void clearElement(int x, int y);
 	double getSingleElementWidth();
