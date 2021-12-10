@@ -9,6 +9,11 @@
 #include <iostream>
 #include "BitmapHandler.h"
 
+/**
+ * .
+ * \brief Main
+ * \return 
+ */
 int main()
 {
     Logger::setPath("logs.txt");

@@ -1,5 +1,11 @@
 #include "HealthBar.h"
 
+/**
+ * .
+ * \brief Konstruktor paskow zdrowia
+ * \param position Pozycja
+ * \param healthPoints Ilosc punktow zdrowia
+ */
 HealthBar::HealthBar(sf::Vector2f position, int healthPoints)
 {
 	this->position = position;
@@ -13,6 +19,10 @@ HealthBar::HealthBar(sf::Vector2f position, int healthPoints)
 	drawDirect = Direction::RIGHT;
 }
 
+/**
+ * .
+ * \brief Konstruktor
+ */
 HealthBar::HealthBar()
 {
 	this->position = sf::Vector2f(0.f, 0.f);
@@ -26,26 +36,51 @@ HealthBar::HealthBar()
 
 sf::Texture HealthBar::texture = sf::Texture();
 
+/**
+ * .
+ * \brief Ustawienie punktow zdrowia
+ * \param healthPoints Punkty zdrowia
+ */
 void HealthBar::setHealthPoints(int healthPoints)
 {
 	this->healthPoints = healthPoints;
 }
 
+/**
+ * .
+ * \brief Pobranie punktow zdrowia 
+ * \return Zwraca ilosc punktow zdrowia
+ */
 int HealthBar::getHealthPoints()
 {
 	return healthPoints;
 }
 
+/**
+ * .
+ * \brief Ustawienie kierunku rysowania
+ * \param direction Kierunek
+ */
 void HealthBar::setDrawDirection(Direction direction)
 {
 	this->drawDirect = direction;
 }
 
+/**
+ * .
+ * \brief Pobranie kierunku rysowania
+ * \return Zwraca kierunek rysowania
+ */
 Direction HealthBar::getDrawDirection()
 {
 	return drawDirect;
 }
 
+/**
+ * .
+ * \brief Rysuje paski zdrowia
+ * \param window Wskaznik na okno
+ */
 void HealthBar::draw(sf::RenderWindow* window)
 {
 	if(drawDirect == Direction::RIGHT)
@@ -67,6 +102,11 @@ void HealthBar::draw(sf::RenderWindow* window)
 
 }
 
+/**
+ * .
+ * \brief Ustawia teksture dla zdrowia
+ * \param path Sciezka
+ */
 void HealthBar::loadHealthTextureFromFile(std::string path)
 {
 	if (!texture.loadFromFile(path))

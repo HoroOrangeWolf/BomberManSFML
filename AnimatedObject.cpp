@@ -1,5 +1,4 @@
 #include "AnimatedObject.h"
-#include "AnimatedObject.h"
 
 /**
  * .

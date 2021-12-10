@@ -1,5 +1,11 @@
 #include "EndGameScreen.h"
 
+/**
+ * .
+ * \brief Wyswietla ekran po zakonczeniu gry
+ * \param window Wskaznik na okno
+ * \param text Tekst
+ */
 void EndGameScreen::run(sf::RenderWindow* window, std::string text)
 {
 	window->clear();

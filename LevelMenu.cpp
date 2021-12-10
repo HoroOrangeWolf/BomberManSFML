@@ -1,5 +1,11 @@
 #include "LevelMenu.h"
 
+/**
+ * .
+ * \brief Sprawdza czy myszka jest w danym obszarze
+ * \param shape Ksztalt
+ * \return
+ */
 bool LevelMenu::isMouseIn(Button& shape)
 {
     sf::Vector2i mousePosition = sf::Mouse::getPosition(*window);
@@ -10,16 +16,31 @@ bool LevelMenu::isMouseIn(Button& shape)
     return (mousePosition.x >= position.x && mousePosition.y >= position.y && mousePosition.x <= (position.x + size.x) && mousePosition.y <= (position.y + size.y));
 }
 
+/**
+ * .
+ * \brief Pobiera obeczny czas
+ * \return Zwraca obecny czas
+ */
 auto LevelMenu::getCurrentTime()
 {
     return std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
 }
 
+/**
+ * .
+ * \brief Konstruktor level menu
+ * \param window Wskaznik na okno
+ */
 LevelMenu::LevelMenu(sf::RenderWindow* window)
 {
     this->window = window;
 }
 
+/**
+ * .
+ * \brief Uruchamia level menu
+ * \return 
+ */
 MenuStates LevelMenu::run()
 {
     auto lastFrame = getCurrentTime();

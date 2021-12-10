@@ -1,7 +1,11 @@
 #include "Player.h"
 #include <iostream>
 
-
+/**
+ * .
+ * \brief Konstruktor gracza
+ * \param playerName Nickname gracza
+ */
 Player::Player(std::string playerName)
 {
 	this->playerName = playerName;
@@ -29,11 +33,23 @@ Player::Player(std::string playerName)
 	this->healthBar = HealthBar(sf::Vector2f(0.f, 0.f), 3);
 }
 
+/**
+ * .
+ * \brief Pobiera nazwe gracza
+ * \return 
+ */
 std::string Player::getPlayerName()
 {
 	return playerName;
 }
 
+/**
+ * .
+ * \brief Rysuje gracza na mapie
+ * \param width Szerokosc
+ * \param height Wysokosc
+ * \param window Wskaznik na okno
+ */
 void Player::drawPlayer(double width, double height, sf::RenderWindow* window)
 {
 	width *= 0.9f;
@@ -60,6 +76,11 @@ void Player::drawPlayer(double width, double height, sf::RenderWindow* window)
 	healthBar.draw(window);
 }
 
+/**
+ * .
+ * \brief Przesuwa gracza
+ * \param position Pozycja
+ */
 void Player::moveBy(sf::Vector2f position)
 {
 	//std::cout << position.x << ' ' << position.y << '\n';
@@ -74,26 +95,50 @@ void Player::moveBy(sf::Vector2f position)
 	playerModel.move(position);
 }
 
+/**
+ * .
+ * \brief Pobiera pozycje gracza
+ * \return 
+ */
 sf::Vector2f Player::getPosition()
 {
 	return this->playerModel.getPosition();
 }
 
+/**
+ * .
+ * \brief Pobiera rozmiar gracza
+ * \return 
+ */
 sf::Vector2f Player::getSize()
 {
 	return playerModel.getSize();
 }
 
+/**
+ * .
+ * \brief Ustawia pozycje gracza
+ * \param position Pozycja
+ */
 void Player::setPosition(sf::Vector2f position)
 {
 	this->playerModel.setPosition(position);
 }
 
+/**
+ * .
+ * \brief Pobiera aktualny czas
+ * \return 
+ */
 auto Player::getCurrentTime()
 {
 	return std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
 }
 
+/**
+ * .
+ * \brief Animuje ruchy gracza
+ */
 void Player::animate()
 {
 	countFPS++;
@@ -157,6 +202,10 @@ void Player::animate()
 	}
 }
 
+/**
+ * .
+ * \brief Inicjuje animacje
+ */
 void Player::initAnimation()
 {
 	switch (direction)
@@ -182,7 +231,11 @@ void Player::initAnimation()
 	}
 }
 
-
+/**
+ * .
+ * \brief Kalkuluje sposob poruszania animacji gracza
+ * \return 
+ */
 sf::Vector2f Player::getCalculateMove()
 {
 	if (sf::Keyboard::isKeyPressed(up.first)) {
@@ -205,127 +258,255 @@ sf::Vector2f Player::getCalculateMove()
 	return sf::Vector2f(0.f, 0.f);
 }
 
+/**
+ * .
+ * \brief Pobiera moc gracza
+ * \return 
+ */
 int Player::getPower()
 {
 	return power;
 }
 
+/**
+ * .
+ * \brief Ustawia moc gracza
+ * \param power Moc
+ */
 void Player::setPower(int power)
 {
 	this->power = power;
 }
 
+/**
+ * .
+ * \brief Pobiera maksymalna moc gracza
+ * \return 
+ */
 int Player::getMaxPower()
 {
 	return maxPower;
 }
 
+/**
+ * .
+ * \brief Ustawia maksymalna moc gracza
+ * \param maxPower Maksymalna moc
+ */
 void Player::setMaxPower(int maxPower)
 {
 	this->maxPower = maxPower;
 }
 
+/**
+ * .
+ * \brief Ustawia pasek zdrowia
+ * \param healthBar Pasek zdrowia
+ */
 void Player::setHealthBar(HealthBar healthBar)
 {
 	this->healthBar = healthBar;
 }
 
+/**
+ * .
+ * \brief Pobiera ilosc zdrowia gracza
+ * \return 
+ */
 int Player::getHealth()
 {
 	return healthBar.getHealthPoints();
 }
 
+/**
+ * .
+ * \brief Ustawia ilosc zdrowia gracza
+ * \param health Ilosc zdrowia
+ */
 void Player::setHealth(int health)
 {
 	healthBar.setHealthPoints(health);
 }
 
+/**
+ * .
+ * \brief Sprawdza czy gracz jest niesmiertelny
+ * \return 
+ */
 bool Player::isImmortal()
 {
 	return getCurrentTime() < (lastDamage + immortality);;
 }
 
+/**
+ * .
+ * \brief Resetuje niesmiertelnosc gracza
+ */
 void Player::resetImmortality()
 {
 	lastDamage = getCurrentTime();
 }
 
+/**
+ * .
+ * \brief Ustawia czas trwania niesmiertelnosci
+ * \param duration Czas trwania
+ */
 void Player::setImmortalityDuration(long long duration)
 {
 	immortality = duration;
 }
 
+/**
+ * .
+ * \brief Ustawia ktory klawisz nalezy kliknac zeby poruszac sie w gore
+ * \param cont Obiekt przechowujacy klawisz i wektor przesuniecia
+ */
 void Player::setUp(std::pair<sf::Keyboard::Key, sf::Vector2f> cont)
 {
 	up = cont;
 }
 
+/**
+ * .
+ * \brief Ustawia ktory klawisz nalezy kliknac zeby poruszac sie w lewo
+ * \param cont Obiekt przechowujacy klawisz i wektor przesuniecia
+ */
 void Player::setLeft(std::pair<sf::Keyboard::Key, sf::Vector2f> cont)
 {
 	left = cont;
 }
 
+/**
+ * .
+ * \brief Ustawia ktory klawisz nalezy kliknac zeby poruszac sie w prawo
+ * \param cont Obiekt przechowujacy klawisz i wektor przesuniecia
+ */
 void Player::setRight(std::pair<sf::Keyboard::Key, sf::Vector2f> cont)
 {
 	right = cont;
 }
 
+/**
+ * .
+ * \brief Ustawia ktory klawisz nalezy kliknac zeby poruszac sie w dol
+ * \param cont Obiekt przechowujacy klawisz i wektor przesuniecia
+ */
 void Player::setDown(std::pair<sf::Keyboard::Key, sf::Vector2f> cont)
 {
 	down = cont;
 }
 
+/**
+ * .
+ * \brief Podkladanie bomby
+ * \param key Klawisz
+ */
 void Player::setPlaceBomb(sf::Keyboard::Key key)
 {
 	this->placeBomb = key;
 }
 
+/**
+ * .
+ * \brief Ustawia opoznienie dla podkladania nastepnej bomby
+ * \param msToPlaceBomb Czas opoznienia
+ */
 void Player::setDelayToPlaceBomb(long msToPlaceBomb)
 {
 	this->msDelayToPlaceBomb;
 }
 
+/**
+ * .
+ * \brief Ustawia kierunek
+ * \param direction Kierunek
+ */
 void Player::setDirection(Direction direction)
 {
 	this->direction = direction;
 }
 
+/**
+ * .
+ * \brief Pobiera kierunek
+ * \return 
+ */
 Direction Player::getDirection()
 {
 	return direction;
 }
 
+/**
+ * .
+ * \brief Restartuje czas polozenia bomby
+ */
 void Player::restartBombPlaceTime()
 {
 	this->lastBombPlace = 0;
 }
 
+/**
+ * .
+ * \brief Sprawdza czy sie nakladaja na siebie obiekty
+ * \param rl Obiekty
+ * \return 
+ */
 bool Player::isIntersect(sf::FloatRect rl)
 {
 	return (point1.getGlobalBounds().intersects(rl) || point2.getGlobalBounds().intersects(rl) || point3.getGlobalBounds().intersects(rl) ||
 		point4.getGlobalBounds().intersects(rl));
 }
 
+/**
+ * .
+ * \brief Sprawdza czy mozna poruszac sie w prawo
+ * \param shape Gracz
+ * \return 
+ */
 bool Player::isCanMoveRight(sf::FloatRect shape)
 {
 	return !point2.getGlobalBounds().intersects(shape);
 }
 
+/**
+ * .
+ * \brief Sprawdza czy mozna poruszac sie w lewo
+ * \param shape Gracz
+ * \return
+ */
 bool Player::isCanMoveLeft(sf::FloatRect shape)
 {
 	return !point4.getGlobalBounds().intersects(shape);
 }
 
+/**
+ * .
+ * \brief Sprawdza czy mozna poruszac sie w gore
+ * \param shape Gracz
+ * \return
+ */
 bool Player::isCanMoveUp(sf::FloatRect shape)
 {
 	return !point1.getGlobalBounds().intersects(shape);
 }
 
+/**
+ * .
+ * \brief Sprawdza czy mozna poruszac sie w dol
+ * \param shape Gracz
+ * \return
+ */
 bool Player::isCanMoveDown(sf::FloatRect shape)
 {
 	return !point3.getGlobalBounds().intersects(shape);
 }
 
+/**
+ * .
+ * \brief Sprawdza czy mozna polozyc bombe
+ * \return 
+ */
 bool Player::isCanPlaceBomb()
 {
 

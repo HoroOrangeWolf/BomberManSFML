@@ -4,6 +4,12 @@
 #include "Chest.h"
 #include "Apple.h"
 
+/**
+ * .
+ * \brief Usuwa interaktywny obiekt z mapy
+ * \param x Wspolrzedna X
+ * \param y Wspolrzedna Y
+ */
 void GameMap::removeInteractiveItem(int x, int y)
 {
 	std::list<MapElement*>::iterator it = interactiveBlocks.begin();
@@ -18,24 +24,42 @@ void GameMap::removeInteractiveItem(int x, int y)
 
 }
 
-
-
+/**
+ * .
+ * \brief Dodaje bombe
+ * \param bomb Bomba
+ */
 void GameMap::addBomb(Bomb* bomb)
 {
 	elements[bomb->getX()][bomb->getY()] = bomb;
 	this->bombs.push_back(bomb);
 }
 
+/**
+ * .
+ * \brief Dodaje gracza 
+ * \param player Gracz
+ */
 void GameMap::addPlayer(Player& player)
 {
 	players.push_back(&player);
 }
 
+/**
+ * .
+ * \brief Usuwa gracza
+ */
 void GameMap::clearPlayers()
 {
 	players.clear();
 }
 
+/**
+ * .
+ * \brief Glowny cykl logiki na mapie
+ * \param window Wskaznik na okno
+ * \return 
+ */
 bool GameMap::gameCycle(sf::RenderWindow *window)
 {
 	int chance = 20;
@@ -444,6 +468,11 @@ bool GameMap::gameCycle(sf::RenderWindow *window)
 
 }
 
+/**
+ * .
+ * \brief Ustawienie pozycji graczy na mapie
+ * \param window
+ */
 void GameMap::setUpPlayers(sf::RenderWindow *window)
 {
 	singleElementWidth = (double)window->getSize().x / mapWidthElements,
@@ -466,6 +495,12 @@ void GameMap::setUpPlayers(sf::RenderWindow *window)
 
 }
 
+/**
+ * .
+ * \brief Konstruktor mapy
+ * \param mapWidthElements Szerokosc
+ * \param mapHeightElements Wysokosc
+ */
 GameMap::GameMap(int mapWidthElements, int mapHeightElements)
 {
 	this->elements = new MapElement ** [mapWidthElements];
@@ -479,11 +514,22 @@ GameMap::GameMap(int mapWidthElements, int mapHeightElements)
 	}
 }
 
+/**
+ * .
+ * \brief Destruktor
+ */
 GameMap::~GameMap()
 {
 
 }
 
+/**
+ * .
+ * \brief Ustawia element mapy
+ * \param x Wspolrzedna X
+ * \param y Wspolrzedna Y
+ * \param element Element
+ */
 void GameMap::setElement(int x, int y, MapElement *element)
 {
 	element->setX(x);
@@ -497,6 +543,12 @@ void GameMap::setElement(int x, int y, MapElement *element)
 	elements[x][y] = element;
 }
 
+/**
+ * .
+ * \brief Usuwa element z mapy
+ * \param x Wspolrzedna X
+ * \param y Wspolrzedna Y
+ */
 void GameMap::clearElement(int x, int y)
 {
 	delete elements[x][y];
@@ -505,21 +557,43 @@ void GameMap::clearElement(int x, int y)
 	this->removeInteractiveItem(x, y);
 }
 
+/**
+ * .
+ * \brief Pobranie szerokosci pojedynczego elementu mapy
+ * \return 
+ */
 double GameMap::getSingleElementWidth()
 {
 	return singleElementWidth;
 }
 
+/**
+ * .
+ * \brief Pobranie wysokosci pojedynczego elementu mapy
+ * \return
+ */
 double GameMap::getSingleElementHeight()
 {
 	return singleElementHeight;
 }
 
+/**
+ * .
+ * \brief Pobiera element z mapy
+ * \param x Wspolrzedna X
+ * \param y Wspolrzedna Y
+ * \return 
+ */
 MapElement* GameMap::getElement(int x, int y)
 {
 	return elements[x][y];
 }
 
+/**
+ * .
+ * \brief Rysowanie mapy
+ * \param window Wskaznik na okno
+ */
 void GameMap::drawMap(sf::RenderWindow* window)
 {
 	sf::Vector2u sizeWindow = window->getSize();
@@ -545,6 +619,12 @@ void GameMap::drawMap(sf::RenderWindow* window)
 		}
 }
 
+/**
+ * .
+ * \brief Ustawienie poruszania sie gracza
+ * \param player Gracz
+ * \return 
+ */
 sf::Vector2f GameMap::calculatePlayerMovement(Player* player)
 {
 	std::list<MapElement*>::iterator it = this->interactiveBlocks.begin();
@@ -573,6 +653,12 @@ sf::Vector2f GameMap::calculatePlayerMovement(Player* player)
 	return mover;
 }
 
+/**
+ * .
+ * \brief Ladowanie mapy z pliku
+ * \param path Sciezka
+ * \return 
+ */
 GameMap GameMap::loadMapFromFile(std::string path)
 {
 	std::ifstream file(path);

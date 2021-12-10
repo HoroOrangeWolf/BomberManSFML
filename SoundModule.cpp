@@ -5,6 +5,10 @@
 
 #include <fstream>
 
+/**
+ * .
+ * \brief Ladowanie dzwiekow
+ */
 void SoundModule::SoundModule::loadSounds()
 {
 	clickBuff = sf::SoundBuffer();
@@ -58,6 +62,11 @@ sf::SoundBuffer SoundModule::SoundModule::deathBuff = sf::SoundBuffer();
 sf::SoundBuffer SoundModule::SoundModule::collect_bonusBuff = sf::SoundBuffer();
 sf::SoundBuffer SoundModule::SoundModule::splat_buff = sf::SoundBuffer();
 
+/**
+ * .
+ * \brief Odtwarzanie dzwiekow
+ * \param sound Dzwiek
+ */
 void SoundModule::SoundModule::play(SOUNDS sound)
 {
 	switch (sound) {

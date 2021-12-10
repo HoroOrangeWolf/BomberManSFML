@@ -5,37 +5,71 @@
 #include "HealthBar.h"
 #include "EndGameScreen.h"
 
+/**
+ * .
+ * \brief Konstruktor silnika gry
+ * \param title Tytul
+ * \param width Szerokosc
+ * \param height Wysokosc
+ */
 GameEngine::GameEngine(std::string title, int width, int height)
 {
 	window = new RenderWindow(sf::VideoMode(width, height), "SFML", sf::Style::Close);
 }
 
+/**
+ * .
+ * \brief Dodanie gracza
+ * \param player Gracz
+ */
 void GameEngine::addPlayer(Player& player)
 {
     playerList.push_back(&player);
 }
 
-
+/**
+ * .
+ * \brief Pobiera obeczny czas
+ * \return Zwraca obecny czas
+ */
 auto GameEngine::getCurrentTime()
 {
     return std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
 }
 
+/**
+ * .
+ * \brief Usuwa graczy
+ */
 void GameEngine::clearPlayers()
 {
     playerList.clear();
 }
 
+/**
+ * .
+ * \brief Ustawia ilosc FPS
+ * \param fps FPS
+ */
 void GameEngine::setFps(int fps)
 {
     this->fps = fps;
 }
 
+/**
+ * .
+ * \brief Ustawia mape gry
+ * \param map Mapa
+ */
 void GameEngine::setGameMap(GameMap& map)
 {
 	this->map = &map;
 }
 
+/**
+ * .
+ * \brief Glowna petla gry
+ */
 void GameEngine::run()
 {
     auto lastFrame = getCurrentTime();
@@ -90,6 +124,11 @@ void GameEngine::run()
     }
 }
 
+/**
+ * .
+ * \brief Zwraca wskaznik na okno
+ * \return 
+ */
 RenderWindow* GameEngine::getWindow()
 {
     return window;

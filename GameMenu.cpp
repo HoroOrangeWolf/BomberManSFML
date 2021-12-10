@@ -1,10 +1,21 @@
 #include "GameMenu.h"
 
+/**
+ * .
+ * \brief Konstruktor menu gry
+ * \param window
+ */
 GameMenu::GameMenu(sf::RenderWindow* window)
 {
 	this->window = window;
 }
 
+/**
+ * .
+ * \brief Sprawdza czy myszka jest w danym obszarze
+ * \param shape Ksztalt
+ * \return 
+ */
 bool GameMenu::isMouseIn(Button& shape)
 {
     sf::Vector2i mousePosition = sf::Mouse::getPosition(*window);
@@ -15,11 +26,21 @@ bool GameMenu::isMouseIn(Button& shape)
     return (mousePosition.x >= position.x && mousePosition.y >= position.y && mousePosition.x <= (position.x + size.x) && mousePosition.y <= (position.y + size.y));
 }
 
+/**
+ * .
+ * \brief Pobiera aktualny czas
+ * \return Zwraca aktualny czas
+ */
 auto GameMenu::getCurrentTime()
 {
     return std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
 }
 
+/**
+ * .
+ * \brief Uruchamia menu gry 
+ * \return 
+ */
 MenuStates GameMenu::run()
 {
     auto lastFrame = getCurrentTime();
