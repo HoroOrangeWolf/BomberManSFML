@@ -1,6 +1,7 @@
 #pragma once
 #include "MapElement.h"
 #include <SFML/Graphics.hpp>
+#include "Logger.h"
 
 class StaticBlock :
     public MapElement

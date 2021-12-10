@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include "Player.h"
 #include "GameMap.h"
+#include "Logger.h"
 #include <vector>
 
 using namespace sf;

@@ -5,11 +5,13 @@
 #include "SoundModule.h"
 #include "GameMenu.h"
 #include "Chest.h"
+#include "Logger.h"
 #include <iostream>
 #include "BitmapHandler.h"
 
 int main()
 {
+    Logger::setPath("logs.txt");
     std::srand(std::time(nullptr));
     GameEngine engine("Sfml", 700, 700);
     HealthBar::loadHealthTextureFromFile("images/heart.png");

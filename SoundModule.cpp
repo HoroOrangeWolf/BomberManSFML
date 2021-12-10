@@ -10,7 +10,7 @@ void SoundModule::SoundModule::loadSounds()
 	clickBuff = sf::SoundBuffer();
 
 	if (!clickBuff.loadFromFile("sounds/ClickSound.wav"))
-		std::cout << "Can't load ClickSound" << std::endl;
+		Logger::log("Nie mozna zaladowac dzwieku");
 
 	click = sf::Sound(clickBuff);
 
@@ -18,7 +18,7 @@ void SoundModule::SoundModule::loadSounds()
 	collect_bonusBuff = sf::SoundBuffer();
 
 	if (!collect_bonusBuff.loadFromFile("sounds/CollectSound.wav"))
-		std::cout << "Can't load CollectSound" << std::endl;
+		Logger::log("Nie mozna zaladowac dzwieku");
 
 	collect_bonus = sf::Sound(collect_bonusBuff);
 
@@ -26,7 +26,7 @@ void SoundModule::SoundModule::loadSounds()
 	deathBuff = sf::SoundBuffer();
 
 	if (!deathBuff.loadFromFile("sounds/DeathSound.wav"))
-		std::cout << "Can't load DeathSound" << std::endl;
+		Logger::log("Nie mozna zaladowac dzwieku");
 
 	death = sf::Sound(deathBuff);
 
@@ -34,15 +34,15 @@ void SoundModule::SoundModule::loadSounds()
 	explosionBuff = sf::SoundBuffer();
 
 	if (!explosionBuff.loadFromFile("sounds/ExplosionSound.wav"))
-		std::cout << "Can't load ExplosionSound" << std::endl;
+		Logger::log("Nie mozna zaladowac dzwieku");
 
 	explosion = sf::Sound(explosionBuff);
 
 	splat_buff = sf::SoundBuffer();
 
 	if (!splat_buff.loadFromFile("sounds/splat.wav"))
-		std::cout << "Can't load splat sound" << std::endl;
-	
+		Logger::log("Nie mozna zaladowac dzwieku");
+
 	splat = sf::Sound(splat_buff);
 }
 

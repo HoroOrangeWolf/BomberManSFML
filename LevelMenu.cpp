@@ -31,6 +31,9 @@ MenuStates LevelMenu::run()
 
     if (!this->texture.loadFromFile("images/bg.jpg"))
     {
+
+        Logger::log("Nie mozna zaladowac tla!");
+
         throw "Error ladowania tekstury tla!";
     }
 

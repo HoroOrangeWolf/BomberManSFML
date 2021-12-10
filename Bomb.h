@@ -1,6 +1,7 @@
 #pragma once
 #include "MapElement.h"
 #include <chrono>
+#include "Logger.h"
 
 class Bomb :
     public MapElement

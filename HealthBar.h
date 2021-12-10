@@ -2,6 +2,7 @@
 
 #include <SFML/Graphics.hpp>
 #include "Direction.h"
+#include "Logger.h"
 
 class HealthBar
 {

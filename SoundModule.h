@@ -1,6 +1,7 @@
 #pragma once
 
 #include <SFML/Audio.hpp>
+#include "Logger.h"
 
 namespace SoundModule {
 

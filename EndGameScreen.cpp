@@ -5,7 +5,10 @@ void EndGameScreen::run(sf::RenderWindow* window, std::string text)
 	window->clear();
 
     sf::Font font;
-    font.loadFromFile("font/consola.ttf");
+
+    if (!font.loadFromFile("font/consola.ttf"))
+        Logger::log("Nie udalo sie zaladowac font consola");
+
 
     sf::Text textPlay;
     textPlay.setFont(font);

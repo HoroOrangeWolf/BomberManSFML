@@ -7,7 +7,7 @@
 
 GameEngine::GameEngine(std::string title, int width, int height)
 {
-	window = new RenderWindow(sf::VideoMode(width, height), "SFML");
+	window = new RenderWindow(sf::VideoMode(width, height), "SFML", sf::Style::Close);
 }
 
 void GameEngine::addPlayer(Player& player)
@@ -41,7 +41,9 @@ void GameEngine::run()
     auto lastFrame = getCurrentTime();
     int fpsInterval = 1000 / fps;
 
-    texture.loadFromFile("images/map_background.png");
+    if (!texture.loadFromFile("images/map_background.png"))
+        Logger::log("Nie udalo sie zaladowac font consola");
+
     shape.setTexture(&texture);
     shape.setPosition(0, 0);
 

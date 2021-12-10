@@ -6,6 +6,7 @@
 #include "Button.h"
 #include "GameEngine.h"
 #include "LevelMenu.h"
+#include "Logger.h"
 
 class GameMenu
 {

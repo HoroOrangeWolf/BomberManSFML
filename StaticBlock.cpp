@@ -12,6 +12,8 @@ bool StaticBlock::isInteractive()
 
 StaticBlock::StaticBlock()
 {
-    unbreakableBlockTexture.loadFromFile("images/unbreakable_block.png");
+    if (!unbreakableBlockTexture.loadFromFile("images/unbreakable_block.png")) {
+        Logger::log("Nie mozna zaladowac statycznego bloku");
+    }
     shape.setTexture(&unbreakableBlockTexture);
 }

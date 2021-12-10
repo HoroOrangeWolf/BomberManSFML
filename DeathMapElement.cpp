@@ -20,6 +20,8 @@ void DeathMapElement::setMsToDisappear(long msToDisappear)
 void DeathMapElement::setTexture(std::string path)
 {
 	deathElementTexture.loadFromFile(path);
+	if (!deathElementTexture.loadFromFile(path))
+		Logger::log("Nie uda³o siê za³adowaæ Bomb");
 	shape.setTexture(&deathElementTexture);
 }
 

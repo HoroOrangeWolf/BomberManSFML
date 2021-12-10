@@ -13,7 +13,8 @@ void Button::alignCenterText()
 
 Button::Button(sf::Vector2f widthHeight, std::string content)
 {
-	font.loadFromFile("font/consola.ttf");
+	if (!font.loadFromFile("font/consola.ttf"))
+		Logger::log("Nie udalo sie zaladowac font consola");
 
 	shape.setFillColor(sf::Color{ 80,80,80,180 });
 

@@ -1,5 +1,7 @@
 #pragma once
 #include "MapElement.h"
+#include "Logger.h"
+
 class DeathMapElement :
     public MapElement
 {

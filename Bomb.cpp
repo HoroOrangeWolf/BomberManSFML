@@ -1,11 +1,11 @@
 #include "Bomb.h"
-#include <iostream>
 Bomb::Bomb()
 {
 	this->creationTime = getCurrentTime();
 	this->power = 1;
 	this->msToExplode = 1500L;
-	texture.loadFromFile("images/bomba.png");
+	if (!texture.loadFromFile("images/bomba.png"))
+		Logger::log("Nie uda³o siê za³adowaæ Bomb");
 	shape.setTexture(&texture);
 }
 
@@ -14,7 +14,8 @@ Bomb::Bomb(int power, long msToExplode)
 	this->creationTime = getCurrentTime();
 	this->power = power;
 	this->msToExplode = msToExplode;
-	texture.loadFromFile("images/bomba.png");
+	if (!texture.loadFromFile("images/bomba.png"))
+		Logger::log("Nie uda³o siê za³adowaæ Bomb");
 	shape.setTexture(&texture);
 }
 

@@ -4,7 +4,11 @@ HealthBar::HealthBar(sf::Vector2f position, int healthPoints)
 {
 	this->position = position;
 	this->healthPoints = healthPoints;
-	texture.loadFromFile("images/kuba_heart.png");
+
+	if (!texture.loadFromFile("images/kuba_heart.png")) {
+		Logger::log("Nie mozna zaladowac serduszka w ksztalcie kuby!");
+	}
+
 	shape.setTexture(&texture);
 	drawDirect = Direction::RIGHT;
 }
@@ -13,7 +17,9 @@ HealthBar::HealthBar()
 {
 	this->position = sf::Vector2f(0.f, 0.f);
 	healthPoints = 3;
-	texture.loadFromFile("images/kuba_heart.png");
+	if (!texture.loadFromFile("images/kuba_heart.png")) {
+		Logger::log("Nie mozna zaladowac serduszka w ksztalcie kuby!");
+	}
 	shape.setTexture(&texture);
 	drawDirect = Direction::RIGHT;
 }
