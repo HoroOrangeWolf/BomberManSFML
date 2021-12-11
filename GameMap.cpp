@@ -185,6 +185,8 @@ bool GameMap::gameCycle(sf::RenderWindow *window)
 			center->setX(bo->getX());
 			center->setY(bo->getY());
 
+			center->getToDraw().setPosition(sf::Vector2f(bo->getX() * singleElementWidth, bo->getY() * singleElementHeight));
+
 			elements[bo->getX()][bo->getY()] = center;
 
 			int xBasic = bo->getX();
@@ -236,8 +238,9 @@ bool GameMap::gameCycle(sf::RenderWindow *window)
 				element->setX(x);
 				element->setY(yBasic);
 
+				element->getToDraw().setPosition(sf::Vector2f(x* singleElementWidth, yBasic* singleElementHeight));
+
 				elements[element->getX()][element->getY()] = element;
-				
 			}
 			//Leci w d� wybuch
 			for (int y = yBasic + 1, i = 0; i < power && y < mapHeightElements; ++y, ++i) {
@@ -282,6 +285,8 @@ bool GameMap::gameCycle(sf::RenderWindow *window)
 
 				element->setX(xBasic);
 				element->setY(y);
+
+				element->getToDraw().setPosition(sf::Vector2f(xBasic * singleElementWidth, y * singleElementHeight));
 
 				elements[element->getX()][element->getY()] = element;
 			}
@@ -332,6 +337,8 @@ bool GameMap::gameCycle(sf::RenderWindow *window)
 				element->setX(x);
 				element->setY(yBasic);
 
+				element->getToDraw().setPosition(sf::Vector2f(x * singleElementWidth, yBasic * singleElementHeight));
+
 				elements[element->getX()][element->getY()] = element;
 			}
 			//Leci w g�re wybuch
@@ -379,6 +386,9 @@ bool GameMap::gameCycle(sf::RenderWindow *window)
 				element->setX(xBasic);
 				element->setY(y);
 
+			
+				element->getToDraw().setPosition(sf::Vector2f(xBasic*singleElementWidth, y*singleElementHeight));
+
 				elements[element->getX()][element->getY()] = element;
 			}
 	
@@ -401,6 +411,8 @@ bool GameMap::gameCycle(sf::RenderWindow *window)
 
 				if (player->isIntersect(bo->getFloatRect()) && !player->isImmortal()) {
 					player->setHealth(player->getHealth() - 1);
+
+					
 
 					if (player->getHealth() <= 0)
 					{
