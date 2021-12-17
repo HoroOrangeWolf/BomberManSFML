@@ -239,6 +239,7 @@ bool GameMap::gameCycle(sf::RenderWindow *window)
 				element->setY(yBasic);
 
 				element->getToDraw().setPosition(sf::Vector2f(x* singleElementWidth, yBasic* singleElementHeight));
+				element->getToDraw().setSize(sf::Vector2f(singleElementWidth, singleElementHeight));
 
 				elements[element->getX()][element->getY()] = element;
 			}
@@ -287,6 +288,7 @@ bool GameMap::gameCycle(sf::RenderWindow *window)
 				element->setY(y);
 
 				element->getToDraw().setPosition(sf::Vector2f(xBasic * singleElementWidth, y * singleElementHeight));
+				element->getToDraw().setSize(sf::Vector2f(singleElementWidth, singleElementHeight));
 
 				elements[element->getX()][element->getY()] = element;
 			}
@@ -338,6 +340,7 @@ bool GameMap::gameCycle(sf::RenderWindow *window)
 				element->setY(yBasic);
 
 				element->getToDraw().setPosition(sf::Vector2f(x * singleElementWidth, yBasic * singleElementHeight));
+				element->getToDraw().setSize(sf::Vector2f(singleElementWidth, singleElementHeight));
 
 				elements[element->getX()][element->getY()] = element;
 			}
@@ -388,6 +391,7 @@ bool GameMap::gameCycle(sf::RenderWindow *window)
 
 			
 				element->getToDraw().setPosition(sf::Vector2f(xBasic*singleElementWidth, y*singleElementHeight));
+				element->getToDraw().setSize(sf::Vector2f(singleElementWidth, singleElementHeight));
 
 				elements[element->getX()][element->getY()] = element;
 			}
@@ -411,8 +415,6 @@ bool GameMap::gameCycle(sf::RenderWindow *window)
 
 				if (player->isIntersect(bo->getFloatRect()) && !player->isImmortal()) {
 					player->setHealth(player->getHealth() - 1);
-
-					
 
 					if (player->getHealth() <= 0)
 					{
