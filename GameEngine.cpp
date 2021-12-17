@@ -83,6 +83,7 @@ void GameEngine::run()
 
     for (int i = 0; i < playerList.size(); ++i) {
         playerList[i]->initAnimation();
+        playerList[i]->setHealth(3);
         map->addPlayer(*playerList[i]);
     }
 
